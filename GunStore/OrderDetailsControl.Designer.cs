@@ -43,6 +43,7 @@
             this.discountAmountLabel = new System.Windows.Forms.Label();
             this.totalBox = new System.Windows.Forms.TextBox();
             this.discountAmountBox = new System.Windows.Forms.TextBox();
+            this.LicensesBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,10 +176,20 @@
             this.discountAmountBox.Size = new System.Drawing.Size(140, 20);
             this.discountAmountBox.TabIndex = 14;
             // 
+            // LicensesBtn
+            // 
+            this.LicensesBtn.Location = new System.Drawing.Point(297, 439);
+            this.LicensesBtn.Name = "LicensesBtn";
+            this.LicensesBtn.Size = new System.Drawing.Size(75, 23);
+            this.LicensesBtn.TabIndex = 15;
+            this.LicensesBtn.Text = "Лицензии";
+            this.LicensesBtn.UseVisualStyleBackColor = true;
+            // 
             // OrderDetailsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LicensesBtn);
             this.Controls.Add(this.discountAmountBox);
             this.Controls.Add(this.totalBox);
             this.Controls.Add(this.discountAmountLabel);
@@ -219,5 +230,6 @@
         private System.Windows.Forms.Label discountAmountLabel;
         private System.Windows.Forms.TextBox totalBox;
         private System.Windows.Forms.TextBox discountAmountBox;
+        private System.Windows.Forms.Button LicensesBtn;
     }
 }
