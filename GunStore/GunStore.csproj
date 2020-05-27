@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddLicenseToOrderUC.cs">
+    <Compile Include="GunsInOrderUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AddLicenseToOrderUC.Designer.cs">
-      <DependentUpon>AddLicenseToOrderUC.cs</DependentUpon>
+    <Compile Include="GunsInOrderUC.Designer.cs">
+      <DependentUpon>GunsInOrderUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -66,8 +66,8 @@
     <Compile Include="OrderDetailsControl.Designer.cs">
       <DependentUpon>OrderDetailsControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddLicenseToOrderUC.resx">
-      <DependentUpon>AddLicenseToOrderUC.cs</DependentUpon>
+    <EmbeddedResource Include="GunsInOrderUC.resx">
+      <DependentUpon>GunsInOrderUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

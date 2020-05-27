@@ -1,6 +1,6 @@
 ﻿namespace GunStore
 {
-    partial class AddLicenseToOrderUC
+    partial class GunsInOrderUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,8 +31,8 @@
             this.LicenseGridView = new System.Windows.Forms.DataGridView();
             this.licensesInOrderLabel = new System.Windows.Forms.Label();
             this.licenseOrderNumberTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.AddGunToOrderBtn = new System.Windows.Forms.Button();
+            this.RemoveGunFromOrderBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LicenseGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,44 +49,46 @@
             this.licensesInOrderLabel.AutoSize = true;
             this.licensesInOrderLabel.Location = new System.Drawing.Point(5, 7);
             this.licensesInOrderLabel.Name = "licensesInOrderLabel";
-            this.licensesInOrderLabel.Size = new System.Drawing.Size(105, 13);
+            this.licensesInOrderLabel.Size = new System.Drawing.Size(94, 13);
             this.licensesInOrderLabel.TabIndex = 1;
-            this.licensesInOrderLabel.Text = "Лицензии в заказе";
+            this.licensesInOrderLabel.Text = "Оружие в заказе";
             // 
             // licenseOrderNumberTextBox
             // 
-            this.licenseOrderNumberTextBox.Location = new System.Drawing.Point(116, 4);
+            this.licenseOrderNumberTextBox.Location = new System.Drawing.Point(105, 4);
             this.licenseOrderNumberTextBox.Name = "licenseOrderNumberTextBox";
             this.licenseOrderNumberTextBox.ReadOnly = true;
             this.licenseOrderNumberTextBox.Size = new System.Drawing.Size(100, 20);
             this.licenseOrderNumberTextBox.TabIndex = 2;
             // 
-            // label1
+            // AddGunToOrderBtn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 186);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Номер";
+            this.AddGunToOrderBtn.Location = new System.Drawing.Point(457, 2);
+            this.AddGunToOrderBtn.Name = "AddGunToOrderBtn";
+            this.AddGunToOrderBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddGunToOrderBtn.TabIndex = 3;
+            this.AddGunToOrderBtn.Text = "Добавить";
+            this.AddGunToOrderBtn.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // RemoveGunFromOrderBtn
             // 
-            this.textBox1.Location = new System.Drawing.Point(55, 183);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.RemoveGunFromOrderBtn.Location = new System.Drawing.Point(376, 1);
+            this.RemoveGunFromOrderBtn.Name = "RemoveGunFromOrderBtn";
+            this.RemoveGunFromOrderBtn.Size = new System.Drawing.Size(75, 23);
+            this.RemoveGunFromOrderBtn.TabIndex = 4;
+            this.RemoveGunFromOrderBtn.Text = "Удалить";
+            this.RemoveGunFromOrderBtn.UseVisualStyleBackColor = true;
             // 
-            // AddLicenseToOrderUC
+            // GunsInOrderUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.RemoveGunFromOrderBtn);
+            this.Controls.Add(this.AddGunToOrderBtn);
             this.Controls.Add(this.licenseOrderNumberTextBox);
             this.Controls.Add(this.licensesInOrderLabel);
             this.Controls.Add(this.LicenseGridView);
-            this.Name = "AddLicenseToOrderUC";
+            this.Name = "GunsInOrderUC";
             this.Size = new System.Drawing.Size(535, 379);
             ((System.ComponentModel.ISupportInitialize)(this.LicenseGridView)).EndInit();
             this.ResumeLayout(false);
@@ -99,7 +101,7 @@
         private System.Windows.Forms.DataGridView LicenseGridView;
         private System.Windows.Forms.Label licensesInOrderLabel;
         private System.Windows.Forms.TextBox licenseOrderNumberTextBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button AddGunToOrderBtn;
+        private System.Windows.Forms.Button RemoveGunFromOrderBtn;
     }
 }

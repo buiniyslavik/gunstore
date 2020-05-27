@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GunStore
 {
-    public partial class AddLicenseToOrderUC : UserControl
+    public partial class GunsInOrderUC : UserControl
     {
-        public AddLicenseToOrderUC()
+        public GunsInOrderUC()
         {
             InitializeComponent();
         }
