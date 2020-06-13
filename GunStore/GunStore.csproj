@@ -80,6 +80,7 @@
     <Compile Include="OrderDetailsControl.Designer.cs">
       <DependentUpon>OrderDetailsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="TabController.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
