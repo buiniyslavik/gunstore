@@ -33,11 +33,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.фИОDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.телефонDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.клиентыBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gunstoreDataSet = new GunStore.GunstoreDataSet();
             this.клиентыTableAdapter = new GunStore.GunstoreDataSetTableAdapters.КлиентыTableAdapter();
+            this.фИОDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.СуммаПокупок = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.НомерКлиента = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.телефонDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.клиентыBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).BeginInit();
@@ -78,6 +80,8 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.фИОDataGridViewTextBoxColumn,
+            this.СуммаПокупок,
+            this.НомерКлиента,
             this.телефонDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.клиентыBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(4, 34);
@@ -85,20 +89,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(631, 497);
             this.dataGridView1.TabIndex = 4;
-            // 
-            // фИОDataGridViewTextBoxColumn
-            // 
-            this.фИОDataGridViewTextBoxColumn.DataPropertyName = "ФИО";
-            this.фИОDataGridViewTextBoxColumn.HeaderText = "ФИО";
-            this.фИОDataGridViewTextBoxColumn.Name = "фИОDataGridViewTextBoxColumn";
-            this.фИОDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // телефонDataGridViewTextBoxColumn
-            // 
-            this.телефонDataGridViewTextBoxColumn.DataPropertyName = "Телефон";
-            this.телефонDataGridViewTextBoxColumn.HeaderText = "Телефон";
-            this.телефонDataGridViewTextBoxColumn.Name = "телефонDataGridViewTextBoxColumn";
-            this.телефонDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // клиентыBindingSource
             // 
@@ -113,6 +103,34 @@
             // клиентыTableAdapter
             // 
             this.клиентыTableAdapter.ClearBeforeFill = true;
+            // 
+            // фИОDataGridViewTextBoxColumn
+            // 
+            this.фИОDataGridViewTextBoxColumn.DataPropertyName = "ФИО";
+            this.фИОDataGridViewTextBoxColumn.HeaderText = "ФИО";
+            this.фИОDataGridViewTextBoxColumn.Name = "фИОDataGridViewTextBoxColumn";
+            this.фИОDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // СуммаПокупок
+            // 
+            this.СуммаПокупок.DataPropertyName = "СуммаПокупок";
+            this.СуммаПокупок.HeaderText = "СуммаПокупок";
+            this.СуммаПокупок.Name = "СуммаПокупок";
+            this.СуммаПокупок.ReadOnly = true;
+            // 
+            // НомерКлиента
+            // 
+            this.НомерКлиента.DataPropertyName = "НомерКлиента";
+            this.НомерКлиента.HeaderText = "НомерКлиента";
+            this.НомерКлиента.Name = "НомерКлиента";
+            this.НомерКлиента.ReadOnly = true;
+            // 
+            // телефонDataGridViewTextBoxColumn
+            // 
+            this.телефонDataGridViewTextBoxColumn.DataPropertyName = "Телефон";
+            this.телефонDataGridViewTextBoxColumn.HeaderText = "Телефон";
+            this.телефонDataGridViewTextBoxColumn.Name = "телефонDataGridViewTextBoxColumn";
+            this.телефонDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // CustomersUC
             // 
@@ -139,12 +157,13 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn фИОDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn телефонDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn суммаПокупокDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn номерКлиентаDataGridViewTextBoxColumn;
+
         private System.Windows.Forms.BindingSource клиентыBindingSource;
         private GunstoreDataSet gunstoreDataSet;
         private GunstoreDataSetTableAdapters.КлиентыTableAdapter клиентыTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn фИОDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn СуммаПокупок;
+        private System.Windows.Forms.DataGridViewTextBoxColumn НомерКлиента;
+        private System.Windows.Forms.DataGridViewTextBoxColumn телефонDataGridViewTextBoxColumn;
     }
 }

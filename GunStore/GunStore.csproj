@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerAddPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerAddPopupForm.Designer.cs">
+      <DependentUpon>CustomerAddPopupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomersUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,6 +93,9 @@
       <DependentUpon>OrderDetailsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="TabController.cs" />
+    <EmbeddedResource Include="CustomerAddPopupForm.resx">
+      <DependentUpon>CustomerAddPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomersUC.resx">
       <DependentUpon>CustomersUC.cs</DependentUpon>
     </EmbeddedResource>
