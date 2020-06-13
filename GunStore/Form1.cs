@@ -21,5 +21,10 @@ namespace GunStore
         {
             tabControl1.TabPages[0].Controls.Add(new OrderListUc());
         }
+
+        private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TabController.OpenTab(this, new CustomersUC(), "Клиенты");
+        }
     }
 }

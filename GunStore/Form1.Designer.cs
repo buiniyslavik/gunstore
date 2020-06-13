@@ -35,7 +35,6 @@
             this.гладкоствольноеОружиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.нарезноеОружиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оООПToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.menuStrip1.SuspendLayout();
@@ -75,6 +74,7 @@
             this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
             this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.клиентыToolStripMenuItem.Text = "Клиенты";
+            this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
             // 
             // гладкоствольноеОружиеToolStripMenuItem
             // 
@@ -94,30 +94,19 @@
             this.оООПToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.оООПToolStripMenuItem.Text = "ОООП";
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(973, 619);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // tabPage1
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(820, 518);
+            this.tabPage1.Size = new System.Drawing.Size(973, 619);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Клиенты";
+            this.tabPage1.Text = "Заказы";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Multiline = true;
@@ -154,7 +143,6 @@
         private System.Windows.Forms.ToolStripMenuItem гладкоствольноеОружиеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem нарезноеОружиеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оООПToolStripMenuItem;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         public System.Windows.Forms.TabControl tabControl1;
     }

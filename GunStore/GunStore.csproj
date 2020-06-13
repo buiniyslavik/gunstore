@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomersUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomersUC.Designer.cs">
+      <DependentUpon>CustomersUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="GunsInOrderUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -81,6 +87,9 @@
       <DependentUpon>OrderDetailsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="TabController.cs" />
+    <EmbeddedResource Include="CustomersUC.resx">
+      <DependentUpon>CustomersUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -94,8 +94,6 @@ namespace GunStore {
         
         private global::System.Data.DataRelation relationFK_ГСОружиеВЗаказах_Заказы;
         
-        private global::System.Data.DataRelation relationFK_КлиентыВРозыске_Клиенты;
-        
         private global::System.Data.DataRelation relationFK_НарезноеОружие_ЛицензииНарезное;
         
         private global::System.Data.DataRelation relationFK_НарезноеОружиеВЗаказах_Заказы;
@@ -107,10 +105,6 @@ namespace GunStore {
         private global::System.Data.DataRelation relationFK_ОоопВЗаказах_Заказы;
         
         private global::System.Data.DataRelation relationFK_ОоопВЗаказах_Оооп;
-        
-        private global::System.Data.DataRelation relationFK_Разрешения_Клиенты;
-        
-        private global::System.Data.DataRelation relationFK_СкидкиКлиентов_Клиенты;
         
         private global::System.Data.DataRelation relationFK_СкидкиКлиентов_УровниСкидки;
         
@@ -137,6 +131,12 @@ namespace GunStore {
         private global::System.Data.DataRelation relationFK_ТоварыВЗаказах_Товары;
         
         private global::System.Data.DataRelation relationFK_ЧерныйСписок_КлиентыВРозыске;
+        
+        private global::System.Data.DataRelation relationFK_КлиентыВРозыске_Клиенты;
+        
+        private global::System.Data.DataRelation relationFK_Разрешения_Клиенты;
+        
+        private global::System.Data.DataRelation relationFK_СкидкиКлиентов_Клиенты;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -991,15 +991,12 @@ namespace GunStore {
             this.relationFK_ГладкоствольноеОружие_ЛицензииГС = this.Relations["FK_ГладкоствольноеОружие_ЛицензииГС"];
             this.relationFK_ГСОружиеВЗаказах_ГладкоствольноеОружие = this.Relations["FK_ГСОружиеВЗаказах_ГладкоствольноеОружие"];
             this.relationFK_ГСОружиеВЗаказах_Заказы = this.Relations["FK_ГСОружиеВЗаказах_Заказы"];
-            this.relationFK_КлиентыВРозыске_Клиенты = this.Relations["FK_КлиентыВРозыске_Клиенты"];
             this.relationFK_НарезноеОружие_ЛицензииНарезное = this.Relations["FK_НарезноеОружие_ЛицензииНарезное"];
             this.relationFK_НарезноеОружиеВЗаказах_Заказы = this.Relations["FK_НарезноеОружиеВЗаказах_Заказы"];
             this.relationFK_НарезноеОружиеВЗаказах_НарезноеОружие = this.Relations["FK_НарезноеОружиеВЗаказах_НарезноеОружие"];
             this.relationFK_Оооп_ЛицензииОооп = this.Relations["FK_Оооп_ЛицензииОооп"];
             this.relationFK_ОоопВЗаказах_Заказы = this.Relations["FK_ОоопВЗаказах_Заказы"];
             this.relationFK_ОоопВЗаказах_Оооп = this.Relations["FK_ОоопВЗаказах_Оооп"];
-            this.relationFK_Разрешения_Клиенты = this.Relations["FK_Разрешения_Клиенты"];
-            this.relationFK_СкидкиКлиентов_Клиенты = this.Relations["FK_СкидкиКлиентов_Клиенты"];
             this.relationFK_СкидкиКлиентов_УровниСкидки = this.Relations["FK_СкидкиКлиентов_УровниСкидки"];
             this.relationFK_ТипыЕдиницГС_ГладкоствольноеОружие = this.Relations["FK_ТипыЕдиницГС_ГладкоствольноеОружие"];
             this.relationFK_ТипыЕдиницГС_ХарактеристикиГС = this.Relations["FK_ТипыЕдиницГС_ХарактеристикиГС"];
@@ -1013,6 +1010,9 @@ namespace GunStore {
             this.relationFK_Товары_ХарактеристикиОооп = this.Relations["FK_Товары_ХарактеристикиОооп"];
             this.relationFK_ТоварыВЗаказах_Товары = this.Relations["FK_ТоварыВЗаказах_Товары"];
             this.relationFK_ЧерныйСписок_КлиентыВРозыске = this.Relations["FK_ЧерныйСписок_КлиентыВРозыске"];
+            this.relationFK_КлиентыВРозыске_Клиенты = this.Relations["FK_КлиентыВРозыске_Клиенты"];
+            this.relationFK_Разрешения_Клиенты = this.Relations["FK_Разрешения_Клиенты"];
+            this.relationFK_СкидкиКлиентов_Клиенты = this.Relations["FK_СкидкиКлиентов_Клиенты"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1099,10 +1099,6 @@ namespace GunStore {
                         this.tableЗаказы.НомерЗаказаColumn}, new global::System.Data.DataColumn[] {
                         this.tableГСОружиеВЗаказах.НомерЗаказаColumn}, false);
             this.Relations.Add(this.relationFK_ГСОружиеВЗаказах_Заказы);
-            this.relationFK_КлиентыВРозыске_Клиенты = new global::System.Data.DataRelation("FK_КлиентыВРозыске_Клиенты", new global::System.Data.DataColumn[] {
-                        this.tableКлиенты.НомерКлиентаColumn}, new global::System.Data.DataColumn[] {
-                        this.tableКлиентыВРозыске.НомерКлиентаColumn}, false);
-            this.Relations.Add(this.relationFK_КлиентыВРозыске_Клиенты);
             this.relationFK_НарезноеОружие_ЛицензииНарезное = new global::System.Data.DataRelation("FK_НарезноеОружие_ЛицензииНарезное", new global::System.Data.DataColumn[] {
                         this.tableЛицензииНарезное.НомерЛицензииНарColumn}, new global::System.Data.DataColumn[] {
                         this.tableНарезноеОружие.ОтпущеноПоЛицензииНарColumn}, false);
@@ -1127,14 +1123,6 @@ namespace GunStore {
                         this.tableОооп.НомерЕдиницыОоопColumn}, new global::System.Data.DataColumn[] {
                         this.tableОоопВЗаказах.НомерЕдиницыОоопColumn}, false);
             this.Relations.Add(this.relationFK_ОоопВЗаказах_Оооп);
-            this.relationFK_Разрешения_Клиенты = new global::System.Data.DataRelation("FK_Разрешения_Клиенты", new global::System.Data.DataColumn[] {
-                        this.tableКлиенты.НомерКлиентаColumn}, new global::System.Data.DataColumn[] {
-                        this.tableРазрешения.НомерКлиентаColumn}, false);
-            this.Relations.Add(this.relationFK_Разрешения_Клиенты);
-            this.relationFK_СкидкиКлиентов_Клиенты = new global::System.Data.DataRelation("FK_СкидкиКлиентов_Клиенты", new global::System.Data.DataColumn[] {
-                        this.tableКлиенты.НомерКлиентаColumn}, new global::System.Data.DataColumn[] {
-                        this.tableСкидкиКлиентов.НомерКлиентаColumn}, false);
-            this.Relations.Add(this.relationFK_СкидкиКлиентов_Клиенты);
             this.relationFK_СкидкиКлиентов_УровниСкидки = new global::System.Data.DataRelation("FK_СкидкиКлиентов_УровниСкидки", new global::System.Data.DataColumn[] {
                         this.tableУровниСкидки.НомерСкидкиColumn}, new global::System.Data.DataColumn[] {
                         this.tableСкидкиКлиентов.ТипСкидкиColumn}, false);
@@ -1187,6 +1175,18 @@ namespace GunStore {
                         this.tableКлиентыВРозыске.НомерЗаписиColumn}, new global::System.Data.DataColumn[] {
                         this.tableЧерныйСписок.НомерЗаписиColumn}, false);
             this.Relations.Add(this.relationFK_ЧерныйСписок_КлиентыВРозыске);
+            this.relationFK_КлиентыВРозыске_Клиенты = new global::System.Data.DataRelation("FK_КлиентыВРозыске_Клиенты", new global::System.Data.DataColumn[] {
+                        this.tableКлиенты.НомерКлиентаColumn}, new global::System.Data.DataColumn[] {
+                        this.tableКлиентыВРозыске.НомерКлиентаColumn}, false);
+            this.Relations.Add(this.relationFK_КлиентыВРозыске_Клиенты);
+            this.relationFK_Разрешения_Клиенты = new global::System.Data.DataRelation("FK_Разрешения_Клиенты", new global::System.Data.DataColumn[] {
+                        this.tableКлиенты.НомерКлиентаColumn}, new global::System.Data.DataColumn[] {
+                        this.tableРазрешения.НомерКлиентаColumn}, false);
+            this.Relations.Add(this.relationFK_Разрешения_Клиенты);
+            this.relationFK_СкидкиКлиентов_Клиенты = new global::System.Data.DataRelation("FK_СкидкиКлиентов_Клиенты", new global::System.Data.DataColumn[] {
+                        this.tableКлиенты.НомерКлиентаColumn}, new global::System.Data.DataColumn[] {
+                        this.tableСкидкиКлиентов.НомерКлиентаColumn}, false);
+            this.Relations.Add(this.relationFK_СкидкиКлиентов_Клиенты);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2438,11 +2438,11 @@ namespace GunStore {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class КлиентыDataTable : global::System.Data.TypedTableBase<КлиентыRow> {
             
-            private global::System.Data.DataColumn columnНомерКлиента;
-            
             private global::System.Data.DataColumn columnФИО;
             
             private global::System.Data.DataColumn columnТелефон;
+            
+            private global::System.Data.DataColumn columnНомерКлиента;
             
             private global::System.Data.DataColumn columnСуммаПокупок;
             
@@ -2481,14 +2481,6 @@ namespace GunStore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn НомерКлиентаColumn {
-                get {
-                    return this.columnНомерКлиента;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn ФИОColumn {
                 get {
                     return this.columnФИО;
@@ -2500,6 +2492,14 @@ namespace GunStore {
             public global::System.Data.DataColumn ТелефонColumn {
                 get {
                     return this.columnТелефон;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn НомерКлиентаColumn {
+                get {
+                    return this.columnНомерКлиента;
                 }
             }
             
@@ -2551,9 +2551,9 @@ namespace GunStore {
             public КлиентыRow AddКлиентыRow(string ФИО, string Телефон, decimal СуммаПокупок) {
                 КлиентыRow rowКлиентыRow = ((КлиентыRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         ФИО,
                         Телефон,
+                        null,
                         СуммаПокупок};
                 rowКлиентыRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowКлиентыRow);
@@ -2584,35 +2584,35 @@ namespace GunStore {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnНомерКлиента = base.Columns["НомерКлиента"];
                 this.columnФИО = base.Columns["ФИО"];
                 this.columnТелефон = base.Columns["Телефон"];
+                this.columnНомерКлиента = base.Columns["НомерКлиента"];
                 this.columnСуммаПокупок = base.Columns["СуммаПокупок"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnНомерКлиента = new global::System.Data.DataColumn("НомерКлиента", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnНомерКлиента);
                 this.columnФИО = new global::System.Data.DataColumn("ФИО", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnФИО);
                 this.columnТелефон = new global::System.Data.DataColumn("Телефон", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnТелефон);
+                this.columnНомерКлиента = new global::System.Data.DataColumn("НомерКлиента", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnНомерКлиента);
                 this.columnСуммаПокупок = new global::System.Data.DataColumn("СуммаПокупок", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnСуммаПокупок);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnНомерКлиента}, true));
+                this.columnФИО.AllowDBNull = false;
+                this.columnФИО.MaxLength = 2147483647;
+                this.columnТелефон.AllowDBNull = false;
+                this.columnТелефон.MaxLength = 15;
                 this.columnНомерКлиента.AutoIncrement = true;
                 this.columnНомерКлиента.AutoIncrementSeed = -1;
                 this.columnНомерКлиента.AutoIncrementStep = -1;
                 this.columnНомерКлиента.AllowDBNull = false;
                 this.columnНомерКлиента.ReadOnly = true;
                 this.columnНомерКлиента.Unique = true;
-                this.columnФИО.AllowDBNull = false;
-                this.columnФИО.MaxLength = 2147483647;
-                this.columnТелефон.AllowDBNull = false;
-                this.columnТелефон.MaxLength = 15;
                 this.columnСуммаПокупок.AllowDBNull = false;
             }
             
@@ -2843,7 +2843,7 @@ namespace GunStore {
                         null,
                         null};
                 if ((parentКлиентыRowByFK_КлиентыВРозыске_Клиенты != null)) {
-                    columnValuesArray[1] = parentКлиентыRowByFK_КлиентыВРозыске_Клиенты[0];
+                    columnValuesArray[1] = parentКлиентыRowByFK_КлиентыВРозыске_Клиенты[2];
                 }
                 rowКлиентыВРозыскеRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowКлиентыВРозыскеRow);
@@ -5585,7 +5585,7 @@ namespace GunStore {
                         ДействительноДоРазр,
                         КемВыданоРазр};
                 if ((parentКлиентыRowByFK_Разрешения_Клиенты != null)) {
-                    columnValuesArray[1] = parentКлиентыRowByFK_Разрешения_Клиенты[0];
+                    columnValuesArray[1] = parentКлиентыRowByFK_Разрешения_Клиенты[2];
                 }
                 rowРазрешенияRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowРазрешенияRow);
@@ -5885,7 +5885,7 @@ namespace GunStore {
                         null,
                         null};
                 if ((parentКлиентыRowByFK_СкидкиКлиентов_Клиенты != null)) {
-                    columnValuesArray[0] = parentКлиентыRowByFK_СкидкиКлиентов_Клиенты[0];
+                    columnValuesArray[0] = parentКлиентыRowByFK_СкидкиКлиентов_Клиенты[2];
                 }
                 if ((parentУровниСкидкиRowByFK_СкидкиКлиентов_УровниСкидки != null)) {
                     columnValuesArray[1] = parentУровниСкидкиRowByFK_СкидкиКлиентов_УровниСкидки[0];
@@ -11209,17 +11209,6 @@ namespace GunStore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int НомерКлиента {
-                get {
-                    return ((int)(this[this.tableКлиенты.НомерКлиентаColumn]));
-                }
-                set {
-                    this[this.tableКлиенты.НомерКлиентаColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string ФИО {
                 get {
                     return ((string)(this[this.tableКлиенты.ФИОColumn]));
@@ -11237,6 +11226,17 @@ namespace GunStore {
                 }
                 set {
                     this[this.tableКлиенты.ТелефонColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int НомерКлиента {
+                get {
+                    return ((int)(this[this.tableКлиенты.НомерКлиентаColumn]));
+                }
+                set {
+                    this[this.tableКлиенты.НомерКлиентаColumn] = value;
                 }
             }
             
@@ -12102,23 +12102,23 @@ namespace GunStore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public КлиентыRow КлиентыRow {
-                get {
-                    return ((КлиентыRow)(this.GetParentRow(this.Table.ParentRelations["FK_СкидкиКлиентов_Клиенты"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_СкидкиКлиентов_Клиенты"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public УровниСкидкиRow УровниСкидкиRow {
                 get {
                     return ((УровниСкидкиRow)(this.GetParentRow(this.Table.ParentRelations["FK_СкидкиКлиентов_УровниСкидки"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_СкидкиКлиентов_УровниСкидки"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public КлиентыRow КлиентыRow {
+                get {
+                    return ((КлиентыRow)(this.GetParentRow(this.Table.ParentRelations["FK_СкидкиКлиентов_Клиенты"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_СкидкиКлиентов_Клиенты"]);
                 }
             }
         }
@@ -15372,40 +15372,11 @@ SELECT НомерЕдиницыГС, НомерЗаказа FROM ГСОружи�
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Клиенты";
-            tableMapping.ColumnMappings.Add("НомерКлиента", "НомерКлиента");
             tableMapping.ColumnMappings.Add("ФИО", "ФИО");
             tableMapping.ColumnMappings.Add("Телефон", "Телефон");
+            tableMapping.ColumnMappings.Add("НомерКлиента", "НомерКлиента");
             tableMapping.ColumnMappings.Add("СуммаПокупок", "СуммаПокупок");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Клиенты] WHERE (([НомерКлиента] = @Original_НомерКлиента) AND " +
-                "([Телефон] = @Original_Телефон) AND ([СуммаПокупок] = @Original_СуммаПокупок))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_НомерКлиента", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерКлиента", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Телефон", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_СуммаПокупок", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "СуммаПокупок", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Клиенты] ([ФИО], [Телефон], [СуммаПокупок]) VALUES (@ФИО, @Тел" +
-                "ефон, @СуммаПокупок);\r\nSELECT НомерКлиента, ФИО, Телефон, СуммаПокупок FROM Клие" +
-                "нты WHERE (НомерКлиента = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Телефон", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@СуммаПокупок", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "СуммаПокупок", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Клиенты] SET [ФИО] = @ФИО, [Телефон] = @Телефон, [СуммаПокупок] = @СуммаПокупок WHERE (([НомерКлиента] = @Original_НомерКлиента) AND ([Телефон] = @Original_Телефон) AND ([СуммаПокупок] = @Original_СуммаПокупок));
-SELECT НомерКлиента, ФИО, Телефон, СуммаПокупок FROM Клиенты WHERE (НомерКлиента = @НомерКлиента)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Телефон", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@СуммаПокупок", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "СуммаПокупок", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_НомерКлиента", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерКлиента", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Телефон", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_СуммаПокупок", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "СуммаПокупок", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерКлиента", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "НомерКлиента", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15447,149 +15418,6 @@ SELECT НомерКлиента, ФИО, Телефон, СуммаПокупо�
             GunstoreDataSet.КлиентыDataTable dataTable = new GunstoreDataSet.КлиентыDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(GunstoreDataSet.КлиентыDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(GunstoreDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Клиенты");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_НомерКлиента, string Original_Телефон, decimal Original_СуммаПокупок) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_НомерКлиента));
-            if ((Original_Телефон == null)) {
-                throw new global::System.ArgumentNullException("Original_Телефон");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Телефон));
-            }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_СуммаПокупок));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ФИО, string Телефон, decimal СуммаПокупок) {
-            if ((ФИО == null)) {
-                throw new global::System.ArgumentNullException("ФИО");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ФИО));
-            }
-            if ((Телефон == null)) {
-                throw new global::System.ArgumentNullException("Телефон");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Телефон));
-            }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(СуммаПокупок));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ФИО, string Телефон, decimal СуммаПокупок, int Original_НомерКлиента, string Original_Телефон, decimal Original_СуммаПокупок, int НомерКлиента) {
-            if ((ФИО == null)) {
-                throw new global::System.ArgumentNullException("ФИО");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ФИО));
-            }
-            if ((Телефон == null)) {
-                throw new global::System.ArgumentNullException("Телефон");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Телефон));
-            }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(СуммаПокупок));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_НомерКлиента));
-            if ((Original_Телефон == null)) {
-                throw new global::System.ArgumentNullException("Original_Телефон");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Телефон));
-            }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(Original_СуммаПокупок));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(НомерКлиента));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ФИО, string Телефон, decimal СуммаПокупок, int Original_НомерКлиента, string Original_Телефон, decimal Original_СуммаПокупок) {
-            return this.Update(ФИО, Телефон, СуммаПокупок, Original_НомерКлиента, Original_Телефон, Original_СуммаПокупок, Original_НомерКлиента);
         }
     }
     
@@ -24943,8 +24771,6 @@ SELECT НомерТипаОооп, КалибрОооп, ДлинаСтвола�
         
         private ГСОружиеВЗаказахTableAdapter _гСОружиеВЗаказахTableAdapter;
         
-        private КлиентыTableAdapter _клиентыTableAdapter;
-        
         private КлиентыВРозыскеTableAdapter _клиентыВРозыскеTableAdapter;
         
         private ЛицензииГСTableAdapter _лицензииГСTableAdapter;
@@ -25025,20 +24851,6 @@ SELECT НомерТипаОооп, КалибрОооп, ДлинаСтвола�
             }
             set {
                 this._гСОружиеВЗаказахTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public КлиентыTableAdapter КлиентыTableAdapter {
-            get {
-                return this._клиентыTableAdapter;
-            }
-            set {
-                this._клиентыTableAdapter = value;
             }
         }
         
@@ -25349,10 +25161,6 @@ SELECT НомерТипаОооп, КалибрОооп, ДлинаСтвола�
                             && (this._гСОружиеВЗаказахTableAdapter.Connection != null))) {
                     return this._гСОружиеВЗаказахTableAdapter.Connection;
                 }
-                if (((this._клиентыTableAdapter != null) 
-                            && (this._клиентыTableAdapter.Connection != null))) {
-                    return this._клиентыTableAdapter.Connection;
-                }
                 if (((this._клиентыВРозыскеTableAdapter != null) 
                             && (this._клиентыВРозыскеTableAdapter.Connection != null))) {
                     return this._клиентыВРозыскеTableAdapter.Connection;
@@ -25452,9 +25260,6 @@ SELECT НомерТипаОооп, КалибрОооп, ДлинаСтвола�
                 if ((this._гСОружиеВЗаказахTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._клиентыTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._клиентыВРозыскеTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -25532,15 +25337,6 @@ SELECT НомерТипаОооп, КалибрОооп, ДлинаСтвола�
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._характеристикиНарезноеTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._клиентыTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Клиенты.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._клиентыTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -25748,14 +25544,6 @@ SELECT НомерТипаОооп, КалибрОооп, ДлинаСтвола�
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._характеристикиНарезноеTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._клиентыTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Клиенты.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._клиентыTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -26105,14 +25893,6 @@ SELECT НомерТипаОооп, КалибрОооп, ДлинаСтвола�
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._клиентыTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Клиенты.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._клиентыTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._характеристикиНарезноеTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ХарактеристикиНарезное.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -26167,11 +25947,6 @@ SELECT НомерТипаОооп, КалибрОооп, ДлинаСтвола�
             }
             if (((this._гСОружиеВЗаказахTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._гСОружиеВЗаказахTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._клиентыTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._клиентыTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -26323,15 +26098,6 @@ SELECT НомерТипаОооп, КалибрОооп, ДлинаСтвола�
                     if (this._гСОружиеВЗаказахTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._гСОружиеВЗаказахTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._гСОружиеВЗаказахTableAdapter.Adapter);
-                    }
-                }
-                if ((this._клиентыTableAdapter != null)) {
-                    revertConnections.Add(this._клиентыTableAdapter, this._клиентыTableAdapter.Connection);
-                    this._клиентыTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._клиентыTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._клиентыTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._клиентыTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._клиентыTableAdapter.Adapter);
                     }
                 }
                 if ((this._клиентыВРозыскеTableAdapter != null)) {
@@ -26579,10 +26345,6 @@ SELECT НомерТипаОооп, КалибрОооп, ДлинаСтвола�
                 if ((this._гСОружиеВЗаказахTableAdapter != null)) {
                     this._гСОружиеВЗаказахTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._гСОружиеВЗаказахTableAdapter]));
                     this._гСОружиеВЗаказахTableAdapter.Transaction = null;
-                }
-                if ((this._клиентыTableAdapter != null)) {
-                    this._клиентыTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._клиентыTableAdapter]));
-                    this._клиентыTableAdapter.Transaction = null;
                 }
                 if ((this._клиентыВРозыскеTableAdapter != null)) {
                     this._клиентыВРозыскеTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._клиентыВРозыскеTableAdapter]));
