@@ -58,6 +58,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GunstoreDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GunstoreDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="OrderListUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OrderListUc.Designer.cs">
+      <DependentUpon>OrderListUc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OrderDetailsControl.cs">
@@ -66,8 +77,14 @@
     <Compile Include="OrderDetailsControl.Designer.cs">
       <DependentUpon>OrderDetailsControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GunsInOrderUC.resx">
       <DependentUpon>GunsInOrderUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderListUc.resx">
+      <DependentUpon>OrderListUc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,6 +98,17 @@
     <EmbeddedResource Include="OrderDetailsControl.resx">
       <DependentUpon>OrderDetailsControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="GunstoreDataSet1.xsc">
+      <DependentUpon>GunstoreDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="GunstoreDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GunstoreDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GunstoreDataSet1.xss">
+      <DependentUpon>GunstoreDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
