@@ -14,7 +14,9 @@ namespace GunStore
     {
         private static DBController instance;
         private DBController()
-        { }
+        {
+            Open();
+        }
         public static DBController Instance
         {
             get
@@ -24,7 +26,7 @@ namespace GunStore
                 return instance;
             }
         }
-        private SqlConnection DbConn = new SqlConnection(ConfigurationManager.ConnectionStrings["config"].ConnectionString);
+        private SqlConnection DbConn = new SqlConnection("Data Source=CIA;Initial Catalog=Gunstore;Integrated Security=True");//(ConfigurationManager.ConnectionStrings["config"].ConnectionString);
 
         public void Open()
         {
@@ -36,14 +38,20 @@ namespace GunStore
         }
          public int AddCustomer(string name, string phone)
         {
-            var cmd = DbConn.CreateCommand();
-            cmd.CommandText = "EXEC ДобавитьКлиента @ИмяКлиента, @ТелефонКлиента, @Номер OUTPUT";
-            cmd.Parameters.Add("@ИмяКлиента", SqlDbType.VarChar).Value = name;
-            cmd.Parameters.Add("@ТелефонКлиента", SqlDbType.VarChar).Value = phone;
-            cmd.Parameters.Add("@Номер", SqlDbType.Int);
-            cmd.Parameters["@Номер"].Direction = ParameterDirection.Output;
-            cmd.ExecuteNonQuery();
-            return Convert.ToInt32(cmd.Parameters["@Номер"].Value);
+            int i;
+            using (var cmd = DbConn.CreateCommand())
+            {
+                cmd.CommandText = "EXEC @Номер = ДобавитьКлиента @ИмяКлиента, @ТелефонКлиента, @СуммаПокупок";
+                //cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@ИмяКлиента", SqlDbType.VarChar).Value = name;
+                cmd.Parameters.Add("@ТелефонКлиента", SqlDbType.VarChar).Value = phone;
+                cmd.Parameters.Add("@СуммаПокупок", SqlDbType.Int).Value = 0;
+                cmd.Parameters.Add("@Номер", SqlDbType.Int);
+                cmd.Parameters["@Номер"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                i = Convert.ToInt32(cmd.Parameters["@Номер"].Value);
+            }
+            return i;
         }
     }
 }
