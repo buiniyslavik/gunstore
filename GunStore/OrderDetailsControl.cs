@@ -12,9 +12,13 @@ namespace GunStore
 {
     public partial class OrderDetailsControl : UserControl
     {
-        public OrderDetailsControl()
+        public OrderDetailsControl(int OrderNumber)
         {
             InitializeComponent();
+            orderNumberTextBox.Text = OrderNumber.ToString();
+            //string query = $"SELECT * FROM ТоварыВЗаказах JOIN Товары ON ТоварыВЗаказах.Артикул = Товары.Артикул WHERE НомерЗаказа = {OrderNumber}";
+            товарыВЗаказахTableAdapter1.Fill(gunstoreDataSet.ТоварыВЗаказах, OrderNumber);
+            dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
     }
 }

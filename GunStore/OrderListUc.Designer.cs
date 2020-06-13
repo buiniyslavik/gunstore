@@ -81,6 +81,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 95);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(677, 435);
             this.dataGridView1.TabIndex = 2;
             // 
@@ -141,6 +142,7 @@
             this.editOrderBtn.TabIndex = 3;
             this.editOrderBtn.Text = "Изменить";
             this.editOrderBtn.UseVisualStyleBackColor = true;
+            this.editOrderBtn.Click += new System.EventHandler(this.editOrderBtn_Click);
             // 
             // OrderListUc
             // 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.orderNumberLabel = new System.Windows.Forms.Label();
             this.orderNumberTextBox = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -44,7 +45,12 @@
             this.totalBox = new System.Windows.Forms.TextBox();
             this.discountAmountBox = new System.Windows.Forms.TextBox();
             this.LicensesBtn = new System.Windows.Forms.Button();
+            this.товарыВЗаказахTableAdapter1 = new GunStore.GunstoreDataSetTableAdapters.ТоварыВЗаказахTableAdapter();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gunstoreDataSet = new GunStore.GunstoreDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // orderNumberLabel
@@ -185,6 +191,20 @@
             this.LicensesBtn.Text = "Лицензии";
             this.LicensesBtn.UseVisualStyleBackColor = true;
             // 
+            // товарыВЗаказахTableAdapter1
+            // 
+            this.товарыВЗаказахTableAdapter1.ClearBeforeFill = true;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = this.gunstoreDataSet;
+            this.bindingSource1.Position = 0;
+            // 
+            // gunstoreDataSet
+            // 
+            this.gunstoreDataSet.DataSetName = "GunstoreDataSet";
+            this.gunstoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // OrderDetailsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,6 +228,8 @@
             this.Name = "OrderDetailsControl";
             this.Size = new System.Drawing.Size(792, 577);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,5 +253,8 @@
         private System.Windows.Forms.TextBox totalBox;
         private System.Windows.Forms.TextBox discountAmountBox;
         private System.Windows.Forms.Button LicensesBtn;
+        private GunstoreDataSetTableAdapters.ТоварыВЗаказахTableAdapter товарыВЗаказахTableAdapter1;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private GunstoreDataSet gunstoreDataSet;
     }
 }
