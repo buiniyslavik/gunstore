@@ -12,7 +12,8 @@ namespace GunStore
 {
     public partial class OrderListUc : UserControl
     {
-      
+
+        Form1 par;
         public OrderListUc()
         {
             InitializeComponent();
@@ -23,15 +24,14 @@ namespace GunStore
             заказыTableAdapter.Fill(gunstoreDataSet.Заказы);
             dataGridView1.AutoResizeColumns(
                 DataGridViewAutoSizeColumnsMode.AllCells);
+
+            par = (Form1)this.FindForm();
         }
 
         private void editOrderBtn_Click(object sender, EventArgs e)
         {
-            Form1 par = (Form1)this.FindForm();
             int n = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
-            TabController.OpenOrderDetails(par, n);
-           
-            
+            TabController.OpenOrderDetails(par, n);             
         }
     }
 }
