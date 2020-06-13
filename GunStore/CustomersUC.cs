@@ -20,11 +20,21 @@ namespace GunStore
 
         private void CustomersUC_Load(object sender, EventArgs e)
         {
+            refresh();
+            par = (Form1)this.FindForm();
+        }
+        private void refresh()
+        {
             клиентыTableAdapter.Fill(gunstoreDataSet.Клиенты);
             dataGridView1.AutoResizeColumns(
                 DataGridViewAutoSizeColumnsMode.AllCells);
+        }
 
-            par = (Form1)this.FindForm();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CustomerAddPopupForm f = new CustomerAddPopupForm();
+            f.ShowDialog();
+            refresh();
         }
     }
 }

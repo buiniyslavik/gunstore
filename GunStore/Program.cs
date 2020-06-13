@@ -6,8 +6,10 @@ using System.Windows.Forms;
 
 namespace GunStore
 {
+    
     static class Program
     {
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,9 +18,8 @@ namespace GunStore
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            DBController dbc = new DBController();
-            dbc.Open();
             Application.Run(new Form1());
+            DBController dbc = DBController.Instance;
         }
     }
 }

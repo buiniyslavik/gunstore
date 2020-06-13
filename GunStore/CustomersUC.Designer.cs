@@ -33,13 +33,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.клиентыBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gunstoreDataSet = new GunStore.GunstoreDataSet();
-            this.клиентыTableAdapter = new GunStore.GunstoreDataSetTableAdapters.КлиентыTableAdapter();
             this.фИОDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.СуммаПокупок = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.НомерКлиента = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.телефонDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.клиентыBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gunstoreDataSet = new GunStore.GunstoreDataSet();
+            this.клиентыTableAdapter = new GunStore.GunstoreDataSetTableAdapters.КлиентыTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.клиентыBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).BeginInit();
@@ -62,6 +62,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -90,20 +91,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(631, 497);
             this.dataGridView1.TabIndex = 4;
             // 
-            // клиентыBindingSource
-            // 
-            this.клиентыBindingSource.DataMember = "Клиенты";
-            this.клиентыBindingSource.DataSource = this.gunstoreDataSet;
-            // 
-            // gunstoreDataSet
-            // 
-            this.gunstoreDataSet.DataSetName = "GunstoreDataSet";
-            this.gunstoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // клиентыTableAdapter
-            // 
-            this.клиентыTableAdapter.ClearBeforeFill = true;
-            // 
             // фИОDataGridViewTextBoxColumn
             // 
             this.фИОDataGridViewTextBoxColumn.DataPropertyName = "ФИО";
@@ -131,6 +118,20 @@
             this.телефонDataGridViewTextBoxColumn.HeaderText = "Телефон";
             this.телефонDataGridViewTextBoxColumn.Name = "телефонDataGridViewTextBoxColumn";
             this.телефонDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // клиентыBindingSource
+            // 
+            this.клиентыBindingSource.DataMember = "Клиенты";
+            this.клиентыBindingSource.DataSource = this.gunstoreDataSet;
+            // 
+            // gunstoreDataSet
+            // 
+            this.gunstoreDataSet.DataSetName = "GunstoreDataSet";
+            this.gunstoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // клиентыTableAdapter
+            // 
+            this.клиентыTableAdapter.ClearBeforeFill = true;
             // 
             // CustomersUC
             // 

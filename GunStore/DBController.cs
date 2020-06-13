@@ -5,13 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.Sql;
+using System.Data;
 
 namespace GunStore
 {
     public class DBController
     {
-        public SqlConnection DbConn = new SqlConnection();
-        private string connString = ConfigurationManager.ConnectionStrings[0].ConnectionString; 
+        private static DBController instance;
+        private DBController()
+        { }
+        public static DBController Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new DBController();
+                return instance;
+            }
+        }
+        private SqlConnection DbConn = new SqlConnection(ConfigurationManager.ConnectionStrings["config"].ConnectionString);
 
         public void Open()
         {
@@ -20,6 +33,17 @@ namespace GunStore
         public void Close()
         {
             DbConn.Close();
+        }
+         public int AddCustomer(string name, string phone)
+        {
+            var cmd = DbConn.CreateCommand();
+            cmd.CommandText = "EXEC ДобавитьКлиента @ИмяКлиента, @ТелефонКлиента, @Номер OUTPUT";
+            cmd.Parameters.Add("@ИмяКлиента", SqlDbType.VarChar).Value = name;
+            cmd.Parameters.Add("@ТелефонКлиента", SqlDbType.VarChar).Value = phone;
+            cmd.Parameters.Add("@Номер", SqlDbType.Int);
+            cmd.Parameters["@Номер"].Direction = ParameterDirection.Output;
+            cmd.ExecuteNonQuery();
+            return Convert.ToInt32(cmd.Parameters["@Номер"].Value);
         }
     }
 }
