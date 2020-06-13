@@ -75,6 +75,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CustomerAddPopupForm
             // 
@@ -86,6 +87,7 @@
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CustomerAddPopupForm";
             this.Text = "Новый клиент";
             this.ResumeLayout(false);

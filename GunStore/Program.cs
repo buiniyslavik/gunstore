@@ -16,6 +16,8 @@ namespace GunStore
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            DBController dbc = new DBController();
+            dbc.Open();
             Application.Run(new Form1());
         }
     }
