@@ -17,6 +17,11 @@ namespace GunStore
             InitializeComponent();
         }
 
-        
+        private void OrderListUc_Load(object sender, EventArgs e)
+        {
+            заказыTableAdapter.Fill(gunstoreDataSet.Заказы);
+            dataGridView1.AutoResizeColumns(
+                DataGridViewAutoSizeColumnsMode.AllCells);
+        }
     }
 }

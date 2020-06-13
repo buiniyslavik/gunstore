@@ -58,6 +58,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GunstoreDataSet1.cs">
+      <DependentUpon>GunstoreDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="GunstoreDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
