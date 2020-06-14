@@ -32,14 +32,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.createOrderBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.заказыBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gunstoreDataSet = new GunStore.GunstoreDataSet();
-            this.заказыTableAdapter = new GunStore.GunstoreDataSetTableAdapters.ЗаказыTableAdapter();
             this.номерЗаказаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ФИО = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.датаСозданияDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.статусЗаказаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.суммаЗаказаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.заказыBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gunstoreDataSet = new GunStore.GunstoreDataSet();
+            this.заказыTableAdapter = new GunStore.GunstoreDataSetTableAdapters.ЗаказыTableAdapter();
             this.editOrderBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.заказыBindingSource)).BeginInit();
@@ -85,20 +85,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(677, 435);
             this.dataGridView1.TabIndex = 2;
             // 
-            // заказыBindingSource
-            // 
-            this.заказыBindingSource.DataMember = "Заказы";
-            this.заказыBindingSource.DataSource = this.gunstoreDataSet;
-            // 
-            // gunstoreDataSet
-            // 
-            this.gunstoreDataSet.DataSetName = "GunstoreDataSet";
-            this.gunstoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // заказыTableAdapter
-            // 
-            this.заказыTableAdapter.ClearBeforeFill = true;
-            // 
             // номерЗаказаDataGridViewTextBoxColumn
             // 
             this.номерЗаказаDataGridViewTextBoxColumn.DataPropertyName = "НомерЗаказа";
@@ -134,6 +120,20 @@
             this.суммаЗаказаDataGridViewTextBoxColumn.Name = "суммаЗаказаDataGridViewTextBoxColumn";
             this.суммаЗаказаDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // заказыBindingSource
+            // 
+            this.заказыBindingSource.DataMember = "Заказы";
+            this.заказыBindingSource.DataSource = this.gunstoreDataSet;
+            // 
+            // gunstoreDataSet
+            // 
+            this.gunstoreDataSet.DataSetName = "GunstoreDataSet";
+            this.gunstoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // заказыTableAdapter
+            // 
+            this.заказыTableAdapter.ClearBeforeFill = true;
+            // 
             // editOrderBtn
             // 
             this.editOrderBtn.Location = new System.Drawing.Point(512, 4);
@@ -155,6 +155,7 @@
             this.Name = "OrderListUc";
             this.Size = new System.Drawing.Size(677, 530);
             this.Load += new System.EventHandler(this.OrderListUc_Load);
+            this.Enter += new System.EventHandler(this.OrderListUc_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.заказыBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).EndInit();

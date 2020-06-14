@@ -18,13 +18,15 @@ namespace GunStore
         {
             InitializeComponent();
         }
+        private void refresh()
+        {
+            заказыTableAdapter.Fill(gunstoreDataSet.Заказы);
+            dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
 
         private void OrderListUc_Load(object sender, EventArgs e)
         {
-            заказыTableAdapter.Fill(gunstoreDataSet.Заказы);
-            dataGridView1.AutoResizeColumns(
-                DataGridViewAutoSizeColumnsMode.AllCells);
-
+            refresh();
             par = (Form1)this.FindForm();
         }
 
@@ -32,6 +34,11 @@ namespace GunStore
         {
             int n = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
             TabController.OpenTab(par, new OrderDetailsControl(n), $"Заказ {n}");          
+        }
+
+        private void OrderListUc_Enter(object sender, EventArgs e)
+        {
+            refresh();
         }
     }
 }

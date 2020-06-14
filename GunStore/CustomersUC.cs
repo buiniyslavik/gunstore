@@ -13,6 +13,7 @@ namespace GunStore
     public partial class CustomersUC : UserControl
     {
         Form1 par;
+        DBController dbc;
         public CustomersUC()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace GunStore
         {
             refresh();
             par = (Form1)this.FindForm();
+            dbc = DBController.Instance;
         }
         private void refresh()
         {
@@ -35,6 +37,13 @@ namespace GunStore
             CustomerAddPopupForm f = new CustomerAddPopupForm();
             f.ShowDialog();
             refresh();
+        }
+
+        private void newOrderBtn_Click(object sender, EventArgs e)
+        {
+            int ClientID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[2].Value);
+            int OrderNumber = dbc.CreateOrder(ClientID);
+            TabController.OpenTab(par, new OrderDetailsControl(OrderNumber), $"Заказ {OrderNumber}");
         }
     }
 }

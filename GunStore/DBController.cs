@@ -69,5 +69,20 @@ namespace GunStore
             }
             return i;
         }
+
+        public int CreateOrder(int ClientId)
+        {
+            int i;
+            using (var cmd = DbConn.CreateCommand())
+            {
+                cmd.CommandText = "exec @id = СоздатьЗаказ @НомерКлиента";
+                cmd.Parameters.Add("@НомерКлиента", SqlDbType.Int).Value = ClientId;
+                cmd.Parameters.Add("@id", SqlDbType.Int);
+                cmd.Parameters["@id"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                i = Convert.ToInt32(cmd.Parameters["@id"].Value);
+            }
+            return i;
+        }
     }
 }
