@@ -12,17 +12,33 @@ namespace GunStore
 {
     public partial class OrderDetailsControl : UserControl
     {
-        public OrderDetailsControl(int OrderNumber)
+        int OrderNumber;
+        DBController db;
+        public OrderDetailsControl(int orderNumber)
         {
             InitializeComponent();
+            OrderNumber = orderNumber;
             orderNumberTextBox.Text = OrderNumber.ToString();
             //string query = $"SELECT * FROM ТоварыВЗаказах JOIN Товары ON ТоварыВЗаказах.Артикул = Товары.Артикул WHERE НомерЗаказа = {OrderNumber}";
+            db = DBController.Instance;
+            refresh();
+        }
+
+        private void refresh()
+        {
             товарыВЗаказахTableAdapter1.Fill(gunstoreDataSet.ТоварыВЗаказах, OrderNumber);
             dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
-            var db = DBController.Instance;
             totalBox.Text = db.GetOrderTotal(OrderNumber).ToString();
+        }
 
+        private void addToOrderBtn_Click(object sender, EventArgs e)
+        {
+            Form addPopup = new Form();
+            addPopup.AutoSize = true;
+            addPopup.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            addPopup.Controls.Add(new AddMerchToOrder(OrderNumber));
+            addPopup.ShowDialog();
+            refresh();
         }
     }
 }

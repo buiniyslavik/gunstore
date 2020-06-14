@@ -135,6 +135,7 @@
             this.addToOrderBtn.TabIndex = 9;
             this.addToOrderBtn.Text = "Добавить товар";
             this.addToOrderBtn.UseVisualStyleBackColor = true;
+            this.addToOrderBtn.Click += new System.EventHandler(this.addToOrderBtn_Click);
             // 
             // cancelOrderBtn
             // 

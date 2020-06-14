@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMerchToOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddMerchToOrder.Designer.cs">
+      <DependentUpon>AddMerchToOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomerAddPopupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
       <DependentUpon>OrderDetailsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="TabController.cs" />
+    <EmbeddedResource Include="AddMerchToOrder.resx">
+      <DependentUpon>AddMerchToOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerAddPopupForm.resx">
       <DependentUpon>CustomerAddPopupForm.cs</DependentUpon>
     </EmbeddedResource>
