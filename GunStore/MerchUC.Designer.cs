@@ -107,6 +107,7 @@
             this.addMerchBtn.TabIndex = 2;
             this.addMerchBtn.Text = "Добавить";
             this.addMerchBtn.UseVisualStyleBackColor = true;
+            this.addMerchBtn.Click += new System.EventHandler(this.addMerchBtn_Click);
             // 
             // descriptionBox
             // 

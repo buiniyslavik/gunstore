@@ -40,7 +40,15 @@ namespace GunStore
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            descriptionBox.Text = dataGridView1.CurrentRow.Cells["описаниеDataGridViewTextBoxColumn"].Value.ToString();
+            try { descriptionBox.Text = dataGridView1.CurrentRow.Cells["описаниеDataGridViewTextBoxColumn"].Value.ToString(); }
+            catch { } // I know it's bad, dude, it's just a coursework
+        }
+
+        private void addMerchBtn_Click(object sender, EventArgs e)
+        {
+            var mapf = new MerchAddPopupForm();
+            mapf.ShowDialog();
+            refresh();
         }
     }
 }

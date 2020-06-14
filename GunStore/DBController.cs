@@ -84,6 +84,25 @@ namespace GunStore
             }
             return i;
         }
+
+        public int CreateMerch(string name, string desc, decimal price, int stock)
+        {
+            int i;
+            using (var cmd = DbConn.CreateCommand())
+            {
+                cmd.CommandText = "exec @id = ДобавитьТовар @n, @d, @p, @s";
+                cmd.Parameters.Add("@n", SqlDbType.VarChar).Value = name;
+                cmd.Parameters.Add("@d", SqlDbType.NVarChar).Value = desc;
+                cmd.Parameters.Add("@p", SqlDbType.Money).Value = price;
+                cmd.Parameters.Add("@s", SqlDbType.Int).Value = stock;
+                cmd.Parameters.Add("@id", SqlDbType.Int);
+                cmd.Parameters["@id"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                i = Convert.ToInt32(cmd.Parameters["@id"].Value);
+            }
+            return i;
+        }
+
         public void AddMerchToOrder(int OrderId, int MerchId, int Quantity)
         {
             using (var cmd = DbConn.CreateCommand())
