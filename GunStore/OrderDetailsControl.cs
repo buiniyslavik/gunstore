@@ -19,6 +19,10 @@ namespace GunStore
             //string query = $"SELECT * FROM ТоварыВЗаказах JOIN Товары ON ТоварыВЗаказах.Артикул = Товары.Артикул WHERE НомерЗаказа = {OrderNumber}";
             товарыВЗаказахTableAdapter1.Fill(gunstoreDataSet.ТоварыВЗаказах, OrderNumber);
             dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            var db = DBController.Instance;
+            totalBox.Text = db.GetOrderTotal(OrderNumber).ToString();
+
         }
     }
 }

@@ -53,5 +53,21 @@ namespace GunStore
             }
             return i;
         }
+
+        public decimal GetOrderTotal(int orderNumber)
+        {
+            decimal i;
+            using (var cmd = DbConn.CreateCommand())
+            {
+                cmd.CommandText = "SELECT @sum = СуммаЗаказа FROM Заказы WHERE НомерЗаказа = @НомерЗаказа";
+                //cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@НомерЗаказа", SqlDbType.Int).Value = orderNumber;               
+                cmd.Parameters.Add("@sum", SqlDbType.Money);
+                cmd.Parameters["@sum"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                i = Convert.ToDecimal(cmd.Parameters["@sum"].Value);
+            }
+            return i;
+        }
     }
 }
