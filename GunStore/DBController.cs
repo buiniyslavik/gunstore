@@ -84,5 +84,16 @@ namespace GunStore
             }
             return i;
         }
+        public void AddMerchToOrder(int OrderId, int MerchId, int Quantity)
+        {
+            using (var cmd = DbConn.CreateCommand())
+            {
+                cmd.CommandText = "exec ДобавитьТоварВЗаказ @OID @MID @Q";
+                cmd.Parameters.Add("@OID", SqlDbType.Int).Value = OrderId;
+                cmd.Parameters.Add("@MID", SqlDbType.Int).Value = MerchId;
+                cmd.Parameters.Add("@Q", SqlDbType.Int).Value = Quantity;               
+                cmd.ExecuteNonQuery();    
+            }
+        }
     }
 }
