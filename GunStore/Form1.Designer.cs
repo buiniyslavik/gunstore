@@ -37,6 +37,8 @@
             this.оООПToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.товарыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -44,7 +46,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.показатьToolStripMenuItem});
+            this.показатьToolStripMenuItem,
+            this.закрытьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(981, 24);
@@ -56,6 +59,7 @@
             this.показатьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.заказыToolStripMenuItem,
             this.клиентыToolStripMenuItem,
+            this.товарыToolStripMenuItem,
             this.гладкоствольноеОружиеToolStripMenuItem,
             this.нарезноеОружиеToolStripMenuItem,
             this.оООПToolStripMenuItem});
@@ -68,6 +72,7 @@
             this.заказыToolStripMenuItem.Name = "заказыToolStripMenuItem";
             this.заказыToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.заказыToolStripMenuItem.Text = "Заказы";
+            this.заказыToolStripMenuItem.Click += new System.EventHandler(this.заказыToolStripMenuItem_Click);
             // 
             // клиентыToolStripMenuItem
             // 
@@ -115,6 +120,20 @@
             this.tabControl1.Size = new System.Drawing.Size(981, 645);
             this.tabControl1.TabIndex = 0;
             // 
+            // товарыToolStripMenuItem
+            // 
+            this.товарыToolStripMenuItem.Name = "товарыToolStripMenuItem";
+            this.товарыToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.товарыToolStripMenuItem.Text = "Товары";
+            this.товарыToolStripMenuItem.Click += new System.EventHandler(this.товарыToolStripMenuItem_Click);
+            // 
+            // закрытьToolStripMenuItem
+            // 
+            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.закрытьToolStripMenuItem.Text = "Закрыть";
+            this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,6 +164,8 @@
         private System.Windows.Forms.ToolStripMenuItem оООПToolStripMenuItem;
         private System.Windows.Forms.TabPage tabPage1;
         public System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.ToolStripMenuItem товарыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
     }
 }
 

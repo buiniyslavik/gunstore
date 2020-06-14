@@ -83,6 +83,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GunstoreDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="MerchUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MerchUC.Designer.cs">
+      <DependentUpon>MerchUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderListUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GunsInOrderUC.resx">
       <DependentUpon>GunsInOrderUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MerchUC.resx">
+      <DependentUpon>MerchUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderListUc.resx">
       <DependentUpon>OrderListUc.cs</DependentUpon>
