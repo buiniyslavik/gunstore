@@ -34,8 +34,8 @@ namespace GunStore
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CustomerAddPopupForm f = new CustomerAddPopupForm();
-            f.ShowDialog();
+            using (var f = new CustomerAddPopupForm())
+                f.ShowDialog();
             refresh();
         }
 

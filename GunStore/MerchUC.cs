@@ -46,8 +46,8 @@ namespace GunStore
 
         private void addMerchBtn_Click(object sender, EventArgs e)
         {
-            var mapf = new MerchAddPopupForm();
-            mapf.ShowDialog();
+            using (var mapf = new MerchAddPopupForm())
+                mapf.ShowDialog();
             refresh();
         }
     }
