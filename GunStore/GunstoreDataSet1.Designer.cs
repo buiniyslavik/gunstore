@@ -138,6 +138,12 @@ namespace GunStore {
         
         private global::System.Data.DataRelation relationFK_СкидкиКлиентов_Клиенты;
         
+        private global::System.Data.DataRelation relationFK_Товары_ХарактеристикиГС1;
+        
+        private global::System.Data.DataRelation relationFK_Товары_ХарактеристикиНарезное1;
+        
+        private global::System.Data.DataRelation relationFK_Товары_ХарактеристикиОооп1;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1013,6 +1019,9 @@ namespace GunStore {
             this.relationFK_КлиентыВРозыске_Клиенты = this.Relations["FK_КлиентыВРозыске_Клиенты"];
             this.relationFK_Разрешения_Клиенты = this.Relations["FK_Разрешения_Клиенты"];
             this.relationFK_СкидкиКлиентов_Клиенты = this.Relations["FK_СкидкиКлиентов_Клиенты"];
+            this.relationFK_Товары_ХарактеристикиГС1 = this.Relations["FK_Товары_ХарактеристикиГС1"];
+            this.relationFK_Товары_ХарактеристикиНарезное1 = this.Relations["FK_Товары_ХарактеристикиНарезное1"];
+            this.relationFK_Товары_ХарактеристикиОооп1 = this.Relations["FK_Товары_ХарактеристикиОооп1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1187,6 +1196,18 @@ namespace GunStore {
                         this.tableКлиенты.НомерКлиентаColumn}, new global::System.Data.DataColumn[] {
                         this.tableСкидкиКлиентов.НомерКлиентаColumn}, false);
             this.Relations.Add(this.relationFK_СкидкиКлиентов_Клиенты);
+            this.relationFK_Товары_ХарактеристикиГС1 = new global::System.Data.DataRelation("FK_Товары_ХарактеристикиГС1", new global::System.Data.DataColumn[] {
+                        this.tableХарактеристикиГС.НомерТипаГСColumn}, new global::System.Data.DataColumn[] {
+                        this.tableТоварыВЗаказах.НомерТипаГсColumn}, false);
+            this.Relations.Add(this.relationFK_Товары_ХарактеристикиГС1);
+            this.relationFK_Товары_ХарактеристикиНарезное1 = new global::System.Data.DataRelation("FK_Товары_ХарактеристикиНарезное1", new global::System.Data.DataColumn[] {
+                        this.tableХарактеристикиНарезное.НомерТипаНарColumn}, new global::System.Data.DataColumn[] {
+                        this.tableТоварыВЗаказах.НомерТипаНарColumn}, false);
+            this.Relations.Add(this.relationFK_Товары_ХарактеристикиНарезное1);
+            this.relationFK_Товары_ХарактеристикиОооп1 = new global::System.Data.DataRelation("FK_Товары_ХарактеристикиОооп1", new global::System.Data.DataColumn[] {
+                        this.tableХарактеристикиОооп.НомерТипаОоопColumn}, new global::System.Data.DataColumn[] {
+                        this.tableТоварыВЗаказах.НомерТипаОоопColumn}, false);
+            this.Relations.Add(this.relationFK_Товары_ХарактеристикиОооп1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7306,6 +7327,12 @@ namespace GunStore {
             
             private global::System.Data.DataColumn columnСтоимость;
             
+            private global::System.Data.DataColumn columnНомерТипаГс;
+            
+            private global::System.Data.DataColumn columnНомерТипаНар;
+            
+            private global::System.Data.DataColumn columnНомерТипаОооп;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ТоварыВЗаказахDataTable() {
@@ -7381,6 +7408,30 @@ namespace GunStore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn НомерТипаГсColumn {
+                get {
+                    return this.columnНомерТипаГс;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn НомерТипаНарColumn {
+                get {
+                    return this.columnНомерТипаНар;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn НомерТипаОоопColumn {
+                get {
+                    return this.columnНомерТипаОооп;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7416,16 +7467,28 @@ namespace GunStore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ТоварыВЗаказахRow AddТоварыВЗаказахRow(ТоварыRow parentТоварыRowByFK_ТоварыВЗаказах_Товары, int Количество, string Название, decimal Цена, decimal Стоимость) {
+            public ТоварыВЗаказахRow AddТоварыВЗаказахRow(ТоварыRow parentТоварыRowByFK_ТоварыВЗаказах_Товары, int Количество, string Название, decimal Цена, decimal Стоимость, ХарактеристикиГСRow parentХарактеристикиГСRowByFK_Товары_ХарактеристикиГС1, ХарактеристикиНарезноеRow parentХарактеристикиНарезноеRowByFK_Товары_ХарактеристикиНарезное1, ХарактеристикиОоопRow parentХарактеристикиОоопRowByFK_Товары_ХарактеристикиОооп1) {
                 ТоварыВЗаказахRow rowТоварыВЗаказахRow = ((ТоварыВЗаказахRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Количество,
                         Название,
                         Цена,
-                        Стоимость};
+                        Стоимость,
+                        null,
+                        null,
+                        null};
                 if ((parentТоварыRowByFK_ТоварыВЗаказах_Товары != null)) {
                     columnValuesArray[0] = parentТоварыRowByFK_ТоварыВЗаказах_Товары[0];
+                }
+                if ((parentХарактеристикиГСRowByFK_Товары_ХарактеристикиГС1 != null)) {
+                    columnValuesArray[5] = parentХарактеристикиГСRowByFK_Товары_ХарактеристикиГС1[0];
+                }
+                if ((parentХарактеристикиНарезноеRowByFK_Товары_ХарактеристикиНарезное1 != null)) {
+                    columnValuesArray[6] = parentХарактеристикиНарезноеRowByFK_Товары_ХарактеристикиНарезное1[0];
+                }
+                if ((parentХарактеристикиОоопRowByFK_Товары_ХарактеристикиОооп1 != null)) {
+                    columnValuesArray[7] = parentХарактеристикиОоопRowByFK_Товары_ХарактеристикиОооп1[0];
                 }
                 rowТоварыВЗаказахRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowТоварыВЗаказахRow);
@@ -7461,6 +7524,9 @@ namespace GunStore {
                 this.columnНазвание = base.Columns["Название"];
                 this.columnЦена = base.Columns["Цена"];
                 this.columnСтоимость = base.Columns["Стоимость"];
+                this.columnНомерТипаГс = base.Columns["НомерТипаГс"];
+                this.columnНомерТипаНар = base.Columns["НомерТипаНар"];
+                this.columnНомерТипаОооп = base.Columns["НомерТипаОооп"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7476,6 +7542,12 @@ namespace GunStore {
                 base.Columns.Add(this.columnЦена);
                 this.columnСтоимость = new global::System.Data.DataColumn("Стоимость", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnСтоимость);
+                this.columnНомерТипаГс = new global::System.Data.DataColumn("НомерТипаГс", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnНомерТипаГс);
+                this.columnНомерТипаНар = new global::System.Data.DataColumn("НомерТипаНар", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnНомерТипаНар);
+                this.columnНомерТипаОооп = new global::System.Data.DataColumn("НомерТипаОооп", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnНомерТипаОооп);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnАртикул}, true));
                 this.columnАртикул.AllowDBNull = false;
@@ -12630,12 +12702,93 @@ namespace GunStore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int НомерТипаГс {
+                get {
+                    try {
+                        return ((int)(this[this.tableТоварыВЗаказах.НомерТипаГсColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'НомерТипаГс\' in table \'ТоварыВЗаказах\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableТоварыВЗаказах.НомерТипаГсColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int НомерТипаНар {
+                get {
+                    try {
+                        return ((int)(this[this.tableТоварыВЗаказах.НомерТипаНарColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'НомерТипаНар\' in table \'ТоварыВЗаказах\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableТоварыВЗаказах.НомерТипаНарColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int НомерТипаОооп {
+                get {
+                    try {
+                        return ((int)(this[this.tableТоварыВЗаказах.НомерТипаОоопColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'НомерТипаОооп\' in table \'ТоварыВЗаказах\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableТоварыВЗаказах.НомерТипаОоопColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ТоварыRow ТоварыRow {
                 get {
                     return ((ТоварыRow)(this.GetParentRow(this.Table.ParentRelations["FK_ТоварыВЗаказах_Товары"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_ТоварыВЗаказах_Товары"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ХарактеристикиГСRow ХарактеристикиГСRow {
+                get {
+                    return ((ХарактеристикиГСRow)(this.GetParentRow(this.Table.ParentRelations["FK_Товары_ХарактеристикиГС1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Товары_ХарактеристикиГС1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ХарактеристикиНарезноеRow ХарактеристикиНарезноеRow {
+                get {
+                    return ((ХарактеристикиНарезноеRow)(this.GetParentRow(this.Table.ParentRelations["FK_Товары_ХарактеристикиНарезное1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Товары_ХарактеристикиНарезное1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ХарактеристикиОоопRow ХарактеристикиОоопRow {
+                get {
+                    return ((ХарактеристикиОоопRow)(this.GetParentRow(this.Table.ParentRelations["FK_Товары_ХарактеристикиОооп1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Товары_ХарактеристикиОооп1"]);
                 }
             }
             
@@ -12649,6 +12802,42 @@ namespace GunStore {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetСтоимостьNull() {
                 this[this.tableТоварыВЗаказах.СтоимостьColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsНомерТипаГсNull() {
+                return this.IsNull(this.tableТоварыВЗаказах.НомерТипаГсColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetНомерТипаГсNull() {
+                this[this.tableТоварыВЗаказах.НомерТипаГсColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsНомерТипаНарNull() {
+                return this.IsNull(this.tableТоварыВЗаказах.НомерТипаНарColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetНомерТипаНарNull() {
+                this[this.tableТоварыВЗаказах.НомерТипаНарColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsНомерТипаОоопNull() {
+                return this.IsNull(this.tableТоварыВЗаказах.НомерТипаОоопColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetНомерТипаОоопNull() {
+                this[this.tableТоварыВЗаказах.НомерТипаОоопColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -12847,6 +13036,17 @@ namespace GunStore {
                     return ((ТоварыRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Товары_ХарактеристикиГС"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ТоварыВЗаказахRow[] GetТоварыВЗаказахRows() {
+                if ((this.Table.ChildRelations["FK_Товары_ХарактеристикиГС1"] == null)) {
+                    return new ТоварыВЗаказахRow[0];
+                }
+                else {
+                    return ((ТоварыВЗаказахRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Товары_ХарактеристикиГС1"])));
+                }
+            }
         }
         
         /// <summary>
@@ -12986,6 +13186,17 @@ namespace GunStore {
                     return ((ТоварыRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Товары_ХарактеристикиНарезное"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ТоварыВЗаказахRow[] GetТоварыВЗаказахRows() {
+                if ((this.Table.ChildRelations["FK_Товары_ХарактеристикиНарезное1"] == null)) {
+                    return new ТоварыВЗаказахRow[0];
+                }
+                else {
+                    return ((ТоварыВЗаказахRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Товары_ХарактеристикиНарезное1"])));
+                }
+            }
         }
         
         /// <summary>
@@ -13112,6 +13323,17 @@ namespace GunStore {
                 }
                 else {
                     return ((ТоварыRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Товары_ХарактеристикиОооп"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ТоварыВЗаказахRow[] GetТоварыВЗаказахRows() {
+                if ((this.Table.ChildRelations["FK_Товары_ХарактеристикиОооп1"] == null)) {
+                    return new ТоварыВЗаказахRow[0];
+                }
+                else {
+                    return ((ТоварыВЗаказахRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Товары_ХарактеристикиОооп1"])));
                 }
             }
         }
@@ -14913,8 +15135,8 @@ SELECT НомерЕдиницыГС, ОтпущеноПоЛицензииГС, �
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ГСОружиеВЗаказах] ([НомерЕдиницыГС], [НомерЗаказа]) VALUES (@Н" +
-                "омерЕдиницыГС, @НомерЗаказа);\r\nSELECT НомерЕдиницыГС, НомерЗаказа FROM ГСОружиеВ" +
-                "Заказах WHERE (НомерЕдиницыГС = @НомерЕдиницыГС)";
+                "омерЕдиницыГС, @НомерЗаказа);\nSELECT НомерЕдиницыГС, НомерЗаказа FROM ГСОружиеВЗ" +
+                "аказах WHERE (НомерЕдиницыГС = @НомерЕдиницыГС)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерЕдиницыГС", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЕдиницыГС", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерЗаказа", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЗаказа", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -15221,8 +15443,8 @@ SELECT НомерЕдиницыГС, НомерЗаказа FROM ГСОружи�
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT НомерЗаказа, ФИО, ДатаСоздания, СтатусЗаказа, СуммаЗаказа \r\nFROM dbo.Заказ" +
-                "ы JOIN Клиенты ON Заказы.НомерКлиента=Клиенты.НомерКлиента";
+            this._commandCollection[0].CommandText = "SELECT НомерЗаказа, ФИО, ДатаСоздания, СтатусЗаказа, СуммаЗаказа \nFROM dbo.Заказы" +
+                " JOIN Клиенты ON Заказы.НомерКлиента=Клиенты.НомерКлиента";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -15554,17 +15776,17 @@ SELECT НомерЕдиницыГС, НомерЗаказа FROM ГСОружи�
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_НомерКлиента", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерКлиента", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[КлиентыВРозыске] ([НомерКлиента]) VALUES (@НомерКлиента);\r\nSEL" +
-                "ECT НомерЗаписи, НомерКлиента FROM КлиентыВРозыске WHERE (НомерЗаписи = SCOPE_ID" +
-                "ENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[КлиентыВРозыске] ([НомерКлиента]) VALUES (@НомерКлиента);\nSELE" +
+                "CT НомерЗаписи, НомерКлиента FROM КлиентыВРозыске WHERE (НомерЗаписи = SCOPE_IDE" +
+                "NTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерКлиента", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерКлиента", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[КлиентыВРозыске] SET [НомерКлиента] = @НомерКлиента WHERE (([НомерЗ" +
-                "аписи] = @Original_НомерЗаписи) AND ([НомерКлиента] = @Original_НомерКлиента));\r" +
-                "\nSELECT НомерЗаписи, НомерКлиента FROM КлиентыВРозыске WHERE (НомерЗаписи = @Ном" +
-                "ерЗаписи)";
+                "аписи] = @Original_НомерЗаписи) AND ([НомерКлиента] = @Original_НомерКлиента));\n" +
+                "SELECT НомерЗаписи, НомерКлиента FROM КлиентыВРозыске WHERE (НомерЗаписи = @Номе" +
+                "рЗаписи)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерКлиента", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерКлиента", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_НомерЗаписи", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЗаписи", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -17287,8 +17509,8 @@ SELECT НомерЕдиницыНар, ОтпущеноПоЛицензииНа�
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[НарезноеОружиеВЗаказах] ([НомерЕдиницыНар], [НомерЗаказа]) VAL" +
-                "UES (@НомерЕдиницыНар, @НомерЗаказа);\r\nSELECT НомерЕдиницыНар, НомерЗаказа FROM " +
-                "НарезноеОружиеВЗаказах WHERE (НомерЕдиницыНар = @НомерЕдиницыНар)";
+                "UES (@НомерЕдиницыНар, @НомерЗаказа);\nSELECT НомерЕдиницыНар, НомерЗаказа FROM Н" +
+                "арезноеОружиеВЗаказах WHERE (НомерЕдиницыНар = @НомерЕдиницыНар)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерЕдиницыНар", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЕдиницыНар", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерЗаказа", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЗаказа", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -17589,9 +17811,9 @@ SELECT НомерЕдиницыНар, НомерЗаказа FROM Нарезн�
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Оооп] ([ОтпущеноПоЛицензииОооп], [СерийныйНомерОооп]) VALUES (" +
-                "@ОтпущеноПоЛицензииОооп, @СерийныйНомерОооп);\r\nSELECT НомерЕдиницыОооп, Отпущено" +
-                "ПоЛицензииОооп, СерийныйНомерОооп FROM Оооп WHERE (НомерЕдиницыОооп = SCOPE_IDEN" +
-                "TITY())";
+                "@ОтпущеноПоЛицензииОооп, @СерийныйНомерОооп);\nSELECT НомерЕдиницыОооп, ОтпущеноП" +
+                "оЛицензииОооп, СерийныйНомерОооп FROM Оооп WHERE (НомерЕдиницыОооп = SCOPE_IDENT" +
+                "ITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ОтпущеноПоЛицензииОооп", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ОтпущеноПоЛицензииОооп", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@СерийныйНомерОооп", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "СерийныйНомерОооп", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -17940,8 +18162,8 @@ SELECT НомерЕдиницыОооп, ОтпущеноПоЛицензииО�
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ОоопВЗаказах] ([НомерЕдиницыОооп], [НомерЗаказа]) VALUES (@Ном" +
-                "ерЕдиницыОооп, @НомерЗаказа);\r\nSELECT НомерЕдиницыОооп, НомерЗаказа FROM ОоопВЗа" +
-                "казах WHERE (НомерЕдиницыОооп = @НомерЕдиницыОооп)";
+                "ерЕдиницыОооп, @НомерЗаказа);\nSELECT НомерЕдиницыОооп, НомерЗаказа FROM ОоопВЗак" +
+                "азах WHERE (НомерЕдиницыОооп = @НомерЕдиницыОооп)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерЕдиницыОооп", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЕдиницыОооп", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерЗаказа", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЗаказа", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -18243,8 +18465,8 @@ SELECT НомерЕдиницыОооп, НомерЗаказа FROM ОоопВ�
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Патроны] ([Калибр], [ТипСнаряда]) VALUES (@Калибр, @ТипСнаряда" +
-                ");\r\nSELECT НомерТипаПаторнов, Калибр, ТипСнаряда FROM Патроны WHERE (НомерТипаПа" +
-                "торнов = SCOPE_IDENTITY())";
+                ");\nSELECT НомерТипаПаторнов, Калибр, ТипСнаряда FROM Патроны WHERE (НомерТипаПат" +
+                "орнов = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Калибр", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Калибр", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ТипСнаряда", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ТипСнаряда", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -18984,8 +19206,8 @@ SELECT НомерРазрешения, НомерКлиента, ФИОРазр,
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[СкидкиКлиентов] ([НомерКлиента], [ТипСкидки]) VALUES (@НомерКл" +
-                "иента, @ТипСкидки);\r\nSELECT НомерКлиента, ТипСкидки FROM СкидкиКлиентов WHERE (Н" +
-                "омерКлиента = @НомерКлиента)";
+                "иента, @ТипСкидки);\nSELECT НомерКлиента, ТипСкидки FROM СкидкиКлиентов WHERE (Но" +
+                "мерКлиента = @НомерКлиента)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерКлиента", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерКлиента", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ТипСкидки", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ТипСкидки", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -19284,8 +19506,8 @@ SELECT НомерКлиента, ТипСкидки FROM СкидкиКлиен�
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ТипыЕдиницГС] ([НомерЕдиницыГС], [НомерТипаГС]) VALUES (@Номер" +
-                "ЕдиницыГС, @НомерТипаГС);\r\nSELECT НомерЕдиницыГС, НомерТипаГС FROM ТипыЕдиницГС " +
-                "WHERE (НомерЕдиницыГС = @НомерЕдиницыГС)";
+                "ЕдиницыГС, @НомерТипаГС);\nSELECT НомерЕдиницыГС, НомерТипаГС FROM ТипыЕдиницГС W" +
+                "HERE (НомерЕдиницыГС = @НомерЕдиницыГС)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерЕдиницыГС", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЕдиницыГС", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерТипаГС", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерТипаГС", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -19584,8 +19806,8 @@ SELECT НомерЕдиницыГС, НомерТипаГС FROM ТипыЕди�
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ТипыЕдиницНарезное] ([НомерЕдиницыНар], [НомерТипаНар]) VALUES" +
-                " (@НомерЕдиницыНар, @НомерТипаНар);\r\nSELECT НомерЕдиницыНар, НомерТипаНар FROM Т" +
-                "ипыЕдиницНарезное WHERE (НомерЕдиницыНар = @НомерЕдиницыНар)";
+                " (@НомерЕдиницыНар, @НомерТипаНар);\nSELECT НомерЕдиницыНар, НомерТипаНар FROM Ти" +
+                "пыЕдиницНарезное WHERE (НомерЕдиницыНар = @НомерЕдиницыНар)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерЕдиницыНар", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЕдиницыНар", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерТипаНар", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерТипаНар", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -19884,8 +20106,8 @@ SELECT НомерЕдиницыНар, НомерТипаНар FROM ТипыЕ�
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ТипыЕдиницОооп] ([НомерЕдиницыОооп], [НомерТипаОооп]) VALUES (" +
-                "@НомерЕдиницыОооп, @НомерТипаОооп);\r\nSELECT НомерЕдиницыОооп, НомерТипаОооп FROM" +
-                " ТипыЕдиницОооп WHERE (НомерЕдиницыОооп = @НомерЕдиницыОооп)";
+                "@НомерЕдиницыОооп, @НомерТипаОооп);\nSELECT НомерЕдиницыОооп, НомерТипаОооп FROM " +
+                "ТипыЕдиницОооп WHERE (НомерЕдиницыОооп = @НомерЕдиницыОооп)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерЕдиницыОооп", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЕдиницыОооп", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НомерТипаОооп", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерТипаОооп", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -20699,6 +20921,9 @@ SELECT Артикул, НомерТипаГС, НомерТипаПатроно�
             tableMapping.ColumnMappings.Add("Название", "Название");
             tableMapping.ColumnMappings.Add("Цена", "Цена");
             tableMapping.ColumnMappings.Add("Стоимость", "Стоимость");
+            tableMapping.ColumnMappings.Add("НомерТипаГс", "НомерТипаГс");
+            tableMapping.ColumnMappings.Add("НомерТипаНар", "НомерТипаНар");
+            tableMapping.ColumnMappings.Add("НомерТипаОооп", "НомерТипаОооп");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -20716,8 +20941,9 @@ SELECT Артикул, НомерТипаГС, НомерТипаПатроно�
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Товары.Артикул AS Артикул, Название, Количество, Цена, Цена*Количество AS " +
-                "Стоимость \r\nFROM dbo.ТоварыВЗаказах JOIN Товары ON ТоварыВЗаказах.Артикул = Това" +
-                "ры.Артикул\r\nWHERE НомерЗаказа = @OrderNumber";
+                "Стоимость, НомерТипаГс, НомерТипаНар, НомерТипаОооп \nFROM dbo.ТоварыВЗаказах JOI" +
+                "N Товары ON ТоварыВЗаказах.Артикул = Товары.Артикул\nWHERE НомерЗаказа = @OrderNu" +
+                "mber";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrderNumber", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЗаказа", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -20886,8 +21112,8 @@ SELECT Артикул, НомерТипаГС, НомерТипаПатроно�
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[УровниСкидки] ([НазваниеСкидки], [КоэфСкидки]) VALUES (@Назван" +
-                "иеСкидки, @КоэфСкидки);\r\nSELECT НомерСкидки, НазваниеСкидки, КоэфСкидки FROM Уро" +
-                "вниСкидки WHERE (НомерСкидки = SCOPE_IDENTITY())";
+                "иеСкидки, @КоэфСкидки);\nSELECT НомерСкидки, НазваниеСкидки, КоэфСкидки FROM Уров" +
+                "ниСкидки WHERE (НомерСкидки = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@НазваниеСкидки", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НазваниеСкидки", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@КоэфСкидки", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "КоэфСкидки", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -22425,8 +22651,8 @@ SELECT НомерТипаОооп, КалибрОооп, ДлинаСтвола�
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_НомерЗаписи", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "НомерЗаписи", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ЧерныйСписок] DEFAULT VALUES;\r\nSELECT НомерЗаписи FROM ЧерныйС" +
-                "писок WHERE (НомерЗаписи = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ЧерныйСписок] DEFAULT VALUES;\nSELECT НомерЗаписи FROM ЧерныйСп" +
+                "исок WHERE (НомерЗаписи = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
         }
         

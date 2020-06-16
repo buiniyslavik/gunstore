@@ -44,17 +44,20 @@
             this.totalBox = new System.Windows.Forms.TextBox();
             this.discountAmountBox = new System.Windows.Forms.TextBox();
             this.LicensesBtn = new System.Windows.Forms.Button();
-            this.товарыВЗаказахTableAdapter1 = new GunStore.GunstoreDataSetTableAdapters.ТоварыВЗаказахTableAdapter();
-            this.gunstoreDataSet = new GunStore.GunstoreDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gunstoreDataSet = new GunStore.GunstoreDataSet();
             this.товарыВЗаказахBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.товарыВЗаказахTableAdapter1 = new GunStore.GunstoreDataSetTableAdapters.ТоварыВЗаказахTableAdapter();
             this.артикулDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.количествоDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.названиеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ценаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.стоимостьDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).BeginInit();
+            this.номерТипаГсDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.номерТипаНарDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.номерТипаОоопDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.товарыВЗаказахBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -189,15 +192,6 @@
             this.LicensesBtn.Text = "Лицензии";
             this.LicensesBtn.UseVisualStyleBackColor = true;
             // 
-            // товарыВЗаказахTableAdapter1
-            // 
-            this.товарыВЗаказахTableAdapter1.ClearBeforeFill = true;
-            // 
-            // gunstoreDataSet
-            // 
-            this.gunstoreDataSet.DataSetName = "GunstoreDataSet";
-            this.gunstoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -209,18 +203,31 @@
             this.количествоDataGridViewTextBoxColumn,
             this.названиеDataGridViewTextBoxColumn,
             this.ценаDataGridViewTextBoxColumn,
-            this.стоимостьDataGridViewTextBoxColumn});
+            this.стоимостьDataGridViewTextBoxColumn,
+            this.номерТипаГсDataGridViewTextBoxColumn,
+            this.номерТипаНарDataGridViewTextBoxColumn,
+            this.номерТипаОоопDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.товарыВЗаказахBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 61);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 42);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(793, 372);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(764, 391);
             this.dataGridView1.TabIndex = 16;
+            // 
+            // gunstoreDataSet
+            // 
+            this.gunstoreDataSet.DataSetName = "GunstoreDataSet";
+            this.gunstoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // товарыВЗаказахBindingSource
             // 
             this.товарыВЗаказахBindingSource.DataMember = "ТоварыВЗаказах";
             this.товарыВЗаказахBindingSource.DataSource = this.gunstoreDataSet;
+            // 
+            // товарыВЗаказахTableAdapter1
+            // 
+            this.товарыВЗаказахTableAdapter1.ClearBeforeFill = true;
             // 
             // артикулDataGridViewTextBoxColumn
             // 
@@ -257,6 +264,30 @@
             this.стоимостьDataGridViewTextBoxColumn.Name = "стоимостьDataGridViewTextBoxColumn";
             this.стоимостьDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // номерТипаГсDataGridViewTextBoxColumn
+            // 
+            this.номерТипаГсDataGridViewTextBoxColumn.DataPropertyName = "НомерТипаГс";
+            this.номерТипаГсDataGridViewTextBoxColumn.HeaderText = "НомерТипаГс";
+            this.номерТипаГсDataGridViewTextBoxColumn.Name = "номерТипаГсDataGridViewTextBoxColumn";
+            this.номерТипаГсDataGridViewTextBoxColumn.ReadOnly = true;
+            this.номерТипаГсDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // номерТипаНарDataGridViewTextBoxColumn
+            // 
+            this.номерТипаНарDataGridViewTextBoxColumn.DataPropertyName = "НомерТипаНар";
+            this.номерТипаНарDataGridViewTextBoxColumn.HeaderText = "НомерТипаНар";
+            this.номерТипаНарDataGridViewTextBoxColumn.Name = "номерТипаНарDataGridViewTextBoxColumn";
+            this.номерТипаНарDataGridViewTextBoxColumn.ReadOnly = true;
+            this.номерТипаНарDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // номерТипаОоопDataGridViewTextBoxColumn
+            // 
+            this.номерТипаОоопDataGridViewTextBoxColumn.DataPropertyName = "НомерТипаОооп";
+            this.номерТипаОоопDataGridViewTextBoxColumn.HeaderText = "НомерТипаОооп";
+            this.номерТипаОоопDataGridViewTextBoxColumn.Name = "номерТипаОоопDataGridViewTextBoxColumn";
+            this.номерТипаОоопDataGridViewTextBoxColumn.ReadOnly = true;
+            this.номерТипаОоопDataGridViewTextBoxColumn.Visible = false;
+            // 
             // OrderDetailsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,8 +310,8 @@
             this.Controls.Add(this.orderNumberLabel);
             this.Name = "OrderDetailsControl";
             this.Size = new System.Drawing.Size(792, 577);
-            ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.товарыВЗаказахBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -304,14 +335,17 @@
         private System.Windows.Forms.TextBox totalBox;
         private System.Windows.Forms.TextBox discountAmountBox;
         private System.Windows.Forms.Button LicensesBtn;
-        private GunstoreDataSetTableAdapters.ТоварыВЗаказахTableAdapter товарыВЗаказахTableAdapter1;
-        private GunstoreDataSet gunstoreDataSet;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn артикулDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn количествоDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn названиеDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ценаDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn стоимостьDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn номерТипаГсDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn номерТипаНарDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn номерТипаОоопDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource товарыВЗаказахBindingSource;
+        private GunstoreDataSet gunstoreDataSet;
+        private GunstoreDataSetTableAdapters.ТоварыВЗаказахTableAdapter товарыВЗаказахTableAdapter1;
     }
 }
