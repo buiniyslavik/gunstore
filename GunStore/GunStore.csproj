@@ -89,6 +89,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GunstoreDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="LicenseEntryPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LicenseEntryPopupForm.Designer.cs">
+      <DependentUpon>LicenseEntryPopupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MerchAddPopupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GunsInOrderUC.resx">
       <DependentUpon>GunsInOrderUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LicenseEntryPopupForm.resx">
+      <DependentUpon>LicenseEntryPopupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MerchAddPopupForm.resx">
       <DependentUpon>MerchAddPopupForm.cs</DependentUpon>
