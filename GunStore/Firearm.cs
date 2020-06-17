@@ -10,7 +10,8 @@ namespace GunStore
     {
         SHOTGUN = 0,
         RIFLE = 1,
-        LESSLETHAL = 2
+        LESSLETHAL = 2,
+        NOTAGUN = -1
     }
     public sealed class Firearm
     {

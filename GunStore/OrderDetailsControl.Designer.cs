@@ -53,6 +53,8 @@
             this.номерТипаГсDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.номерТипаНарDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.номерТипаОоопDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LicenseColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsAGunColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.товарыВЗаказахBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).BeginInit();
@@ -156,9 +158,9 @@
             // 
             // LicensesBtn
             // 
-            this.LicensesBtn.Location = new System.Drawing.Point(297, 439);
+            this.LicensesBtn.Location = new System.Drawing.Point(11, 448);
             this.LicensesBtn.Name = "LicensesBtn";
-            this.LicensesBtn.Size = new System.Drawing.Size(75, 23);
+            this.LicensesBtn.Size = new System.Drawing.Size(114, 23);
             this.LicensesBtn.TabIndex = 15;
             this.LicensesBtn.Text = "Лицензии";
             this.LicensesBtn.UseVisualStyleBackColor = true;
@@ -177,7 +179,9 @@
             this.стоимостьDataGridViewTextBoxColumn,
             this.номерТипаГсDataGridViewTextBoxColumn,
             this.номерТипаНарDataGridViewTextBoxColumn,
-            this.номерТипаОоопDataGridViewTextBoxColumn});
+            this.номерТипаОоопDataGridViewTextBoxColumn,
+            this.LicenseColumn,
+            this.IsAGunColumn});
             this.dataGridView1.DataSource = this.товарыВЗаказахBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(9, 42);
             this.dataGridView1.Name = "dataGridView1";
@@ -260,6 +264,18 @@
             this.номерТипаОоопDataGridViewTextBoxColumn.ReadOnly = true;
             this.номерТипаОоопDataGridViewTextBoxColumn.Visible = false;
             // 
+            // LicenseColumn
+            // 
+            this.LicenseColumn.HeaderText = "Лицензия";
+            this.LicenseColumn.Name = "LicenseColumn";
+            this.LicenseColumn.ReadOnly = true;
+            // 
+            // IsAGunColumn
+            // 
+            this.IsAGunColumn.HeaderText = "Оружие?";
+            this.IsAGunColumn.Name = "IsAGunColumn";
+            this.IsAGunColumn.ReadOnly = true;
+            // 
             // OrderDetailsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,5 +329,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn номерТипаГсDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn номерТипаНарDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn номерТипаОоопDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LicenseColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsAGunColumn;
     }
 }

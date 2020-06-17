@@ -33,6 +33,23 @@ namespace GunStore
            
         }
 
+        private FirearmClass isAFirearm(DataGridViewRow r)
+        {
+            if (r.Cells["номерТипаГсDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
+            {
+                return FirearmClass.SHOTGUN;
+            }
+            if (r.Cells["номерТипаНарDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
+            {
+                return FirearmClass.RIFLE;
+            }
+            if (r.Cells["номерТипаОоопDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
+            {
+                return FirearmClass.LESSLETHAL;
+            }
+            return FirearmClass.NOTAGUN;
+        }
+
         private void addToOrderBtn_Click(object sender, EventArgs e)
         {
             Form addPopup = new Form();
@@ -45,24 +62,33 @@ namespace GunStore
 
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            foreach (DataGridViewRow r in dataGridView1.Rows)
+            using (DataGridViewCheckBoxCell c = new DataGridViewCheckBoxCell())
             {
-                 if(r.Cells["номерТипаГсDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
-                 {
-                     r.DefaultCellStyle.BackColor = Color.LightGreen;
-                     r.DefaultCellStyle.SelectionBackColor = Color.Green;
-                 }
-                if (r.Cells["номерТипаНарDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
+                c.TrueValue = true;
+                c.FalseValue = false;
+                foreach (DataGridViewRow r in dataGridView1.Rows)
                 {
-                    r.DefaultCellStyle.BackColor = Color.LightPink;
-                    r.DefaultCellStyle.SelectionBackColor = Color.Red;
-                }
-                if (r.Cells["номерТипаОоопDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
-                {
-                    r.DefaultCellStyle.BackColor = Color.LightCyan;
-                    r.DefaultCellStyle.SelectionBackColor = Color.Blue;
-                }
+                    switch (isAFirearm(r))
+                    {
+                        case FirearmClass.SHOTGUN:
+                            r.DefaultCellStyle.BackColor = Color.LightGreen;
+                            r.DefaultCellStyle.SelectionBackColor = Color.Green;
+                            r.Cells["IsAGunColumn"].Value = c.TrueValue;
+                            break;
 
+                        case FirearmClass.RIFLE:
+                            r.DefaultCellStyle.BackColor = Color.LightPink;
+                            r.DefaultCellStyle.SelectionBackColor = Color.Red;
+                            r.Cells["IsAGunColumn"].Value = c.TrueValue;
+                            break;
+
+                        case FirearmClass.LESSLETHAL:
+                            r.DefaultCellStyle.BackColor = Color.LightCyan;
+                            r.DefaultCellStyle.SelectionBackColor = Color.Blue;
+                            r.Cells["IsAGunColumn"].Value = c.TrueValue;
+                            break;
+                    }
+                }
             }
         }
     }
