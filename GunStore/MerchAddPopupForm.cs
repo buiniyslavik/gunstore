@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Transactions;
 
 namespace GunStore
 {
@@ -21,7 +22,11 @@ namespace GunStore
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dbc.CreateMerch(NameTextBox.Text, DescriptionTextBox.Text, Convert.ToDecimal(priceTextBox.Text), Convert.ToInt32(numericUpDown1.Text));
+            using (TransactionScope t = new TransactionScope())
+            {
+                dbc.CreateMerch(NameTextBox.Text, DescriptionTextBox.Text, Convert.ToDecimal(priceTextBox.Text), Convert.ToInt32(numericUpDown1.Text));
+                t.Complete();
+            }
             this.Close();
         }
 

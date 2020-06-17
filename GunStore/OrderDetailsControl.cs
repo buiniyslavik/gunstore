@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Transactions;
 
 namespace GunStore
 {
@@ -120,14 +122,25 @@ namespace GunStore
 
         private void LicensesBtn_Click(object sender, EventArgs e)
         {
-            var gun = Firearm.ParseFromRow(dataGridView1.SelectedRows[0]);            
+            var gun = Firearm.ParseFromRow(dataGridView1.SelectedRows[0]);
+            gun.PieceId = db.GetUnusedGun(gun.Type);
             var LicEntryWindow = new LicenseEntryPopupForm(gun, licenses);
             LicEntryWindow.ShowDialog();
             try
             {
                 License result = licenses[gun];
-                MessageBox.Show(result.ToString());
-                // TODO: add license to DB and tie it to the gun
+                
+                using (TransactionScope tran = new TransactionScope())
+                {
+                    db.AddLicense(result);
+                    db.BindLicense(result, gun);
+                    // TODO show the lic in the window
+                    throw new NotImplementedException();
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show($"base's fucked: {sqlex.Message}");
             }
             catch
             { //in case the entry window got closed

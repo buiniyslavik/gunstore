@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Transactions;
 
 namespace GunStore
 {
@@ -26,7 +27,11 @@ namespace GunStore
         {
             int ItemID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             int Quantity = Convert.ToInt32(numericUpDown1.Value);
-            dbc.AddMerchToOrder(OrderNumber, ItemID, Quantity);
+            using (TransactionScope tran = new TransactionScope())
+            {
+                dbc.AddMerchToOrder(OrderNumber, ItemID, Quantity);
+                tran.Complete();
+            }
             FindForm().Close();
         }
 

@@ -36,7 +36,7 @@ namespace GunStore
         {
             DbConn.Close();
         }
-         public int AddCustomer(string name, string phone)
+        public int AddCustomer(string name, string phone)
         {
             int i;
             using (var cmd = DbConn.CreateCommand())
@@ -61,7 +61,7 @@ namespace GunStore
             {
                 cmd.CommandText = "SELECT @sum = СуммаЗаказа FROM Заказы WHERE НомерЗаказа = @НомерЗаказа";
                 //cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@НомерЗаказа", SqlDbType.Int).Value = orderNumber;               
+                cmd.Parameters.Add("@НомерЗаказа", SqlDbType.Int).Value = orderNumber;
                 cmd.Parameters.Add("@sum", SqlDbType.Money);
                 cmd.Parameters["@sum"].Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
@@ -84,6 +84,7 @@ namespace GunStore
             }
             return i;
         }
+
 
         public int CreateMerch(string name, string desc, decimal price, int stock)
         {
@@ -110,9 +111,146 @@ namespace GunStore
                 cmd.CommandText = "exec ДобавитьТоварВЗаказ @OID, @MID, @Q";
                 cmd.Parameters.Add("@OID", SqlDbType.Int).Value = OrderId;
                 cmd.Parameters.Add("@MID", SqlDbType.Int).Value = MerchId;
-                cmd.Parameters.Add("@Q", SqlDbType.Int).Value = Quantity;               
-                cmd.ExecuteNonQuery();    
+                cmd.Parameters.Add("@Q", SqlDbType.Int).Value = Quantity;
+                cmd.ExecuteNonQuery();
             }
+        }
+
+        public void AddLicense(License l) //(string number, string holderName, DateTime issueDate, DateTime expiryDate, string issuer, FirearmClass type)
+        {
+            using (var cmd = DbConn.CreateCommand())
+            {
+                switch (l.Type)
+                {
+                    case FirearmClass.SHOTGUN:
+                        cmd.CommandText = "exec ДобавитьЛицензиюГс @licnum @owner @issued @expires @issby";
+                        cmd.Parameters.Add("@licnum", SqlDbType.VarChar).Value = l.Number;
+                        cmd.Parameters.Add("@owner", SqlDbType.NVarChar).Value = l.HolderName;
+                        cmd.Parameters.Add("@issued", SqlDbType.Date).Value = l.IssueDate;
+                        cmd.Parameters.Add("@expires", SqlDbType.Date).Value = l.ExpiryDate;
+                        cmd.Parameters.Add("@issuer", SqlDbType.VarChar).Value = l.Issuer;
+                        cmd.ExecuteNonQuery();
+
+                        break;
+                    case FirearmClass.RIFLE:
+                        cmd.CommandText = "exec ДобавитьЛицензиюНар @licnum @owner @issued @expires @issby";
+                        cmd.Parameters.Add("@licnum", SqlDbType.VarChar).Value = l.Number;
+                        cmd.Parameters.Add("@owner", SqlDbType.NVarChar).Value = l.HolderName;
+                        cmd.Parameters.Add("@issued", SqlDbType.Date).Value = l.IssueDate;
+                        cmd.Parameters.Add("@expires", SqlDbType.Date).Value = l.ExpiryDate;
+                        cmd.Parameters.Add("@issuer", SqlDbType.VarChar).Value = l.Issuer;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.LESSLETHAL:
+                        cmd.CommandText = "exec ДобавитьЛицензиюОООП @licnum @owner @issued @expires @issby";
+                        cmd.Parameters.Add("@licnum", SqlDbType.VarChar).Value = l.Number;
+                        cmd.Parameters.Add("@owner", SqlDbType.NVarChar).Value = l.HolderName;
+                        cmd.Parameters.Add("@issued", SqlDbType.Date).Value = l.IssueDate;
+                        cmd.Parameters.Add("@expires", SqlDbType.Date).Value = l.ExpiryDate;
+                        cmd.Parameters.Add("@issuer", SqlDbType.VarChar).Value = l.Issuer;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.NOTAGUN:
+                        throw new Exception("Разрешаю и так!");
+                }
+
+            }
+        }
+
+        public void AddFirearmToOrder(int orderId, Firearm gun)
+        {
+            using (var cmd = DbConn.CreateCommand())
+            {
+                switch (gun.Type)
+                {
+                    case FirearmClass.SHOTGUN:
+                        cmd.CommandText = "exec ДобавитьГсВЗаказ @gunid @orderid";
+                        cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.Parameters.Add("@orderid", SqlDbType.Int).Value = orderId;                       
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.RIFLE:
+                        cmd.CommandText = "exec ДобавитьНарВЗаказ @gunid @orderid";
+                        cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.Parameters.Add("@orderid", SqlDbType.Int).Value = orderId;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.LESSLETHAL:
+                        cmd.CommandText = "exec ДобавитьОоопВЗаказ @gunid @orderid";
+                        cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.Parameters.Add("@orderid", SqlDbType.Int).Value = orderId;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.NOTAGUN:
+                        throw new Exception("Разрешаю и так!");
+                }
+            }
+        }
+        public void BindLicense(License lic, Firearm gun)
+        {
+            using (var cmd = DbConn.CreateCommand())
+            {
+                switch (gun.Type)
+                {
+                    case FirearmClass.SHOTGUN:
+                        cmd.CommandText = "exec ОтпуститьОружиеГс @gunid @licid";
+                        cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.RIFLE:
+                        cmd.CommandText = "exec ОтпуститьОружиеГс @gunid @licid";
+                        cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.LESSLETHAL:
+                        cmd.CommandText = "exec ОтпуститьОружиеГс @gunid @licid";
+                        cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.NOTAGUN:
+                        throw new Exception("Разрешаю и так!");
+                }
+            }
+        }
+
+        public int GetUnusedGun(FirearmClass type)
+        {
+            int i = -1;
+            using (var cmd = DbConn.CreateCommand())
+            {
+                switch (type)
+                {
+
+                    case FirearmClass.SHOTGUN:
+                        cmd.CommandText = "exec СвободнаяЕдиницаГс @id output";
+                        cmd.Parameters.Add("@id", SqlDbType.Int);
+                        cmd.Parameters["@id"].Direction = ParameterDirection.Output;
+                        cmd.ExecuteNonQuery();
+                        i = Convert.ToInt32(cmd.Parameters["@id"].Value);
+                        break;
+                    case FirearmClass.RIFLE:
+                        cmd.CommandText = "exec СвободнаяЕдиницаНар @id output";
+                        cmd.Parameters.Add("@id", SqlDbType.Int);
+                        cmd.Parameters["@id"].Direction = ParameterDirection.Output;
+                        cmd.ExecuteNonQuery();
+                        i = Convert.ToInt32(cmd.Parameters["@id"].Value);
+                        break;
+                    case FirearmClass.LESSLETHAL:
+                        cmd.CommandText = "exec СвободнаяЕдиницаОооп @id output";
+                        cmd.Parameters.Add("@id", SqlDbType.Int);
+                        cmd.Parameters["@id"].Direction = ParameterDirection.Output;
+                        cmd.ExecuteNonQuery();
+                        i = Convert.ToInt32(cmd.Parameters["@id"].Value);
+                        break;
+                    case FirearmClass.NOTAGUN:
+                        throw new Exception("Разрешаю и так!");
+                }
+            }
+            return i;
         }
     }
 }
+

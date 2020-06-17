@@ -17,7 +17,7 @@ namespace GunStore
     public sealed class Firearm
     {
         public string Name { get; }
-        public int PieceId { get; }
+        public int PieceId { get; set; }
         public int TypeId { get;  }
         
         public FirearmClass Type { get; }
