@@ -12,11 +12,15 @@ namespace GunStore
 {
     public partial class LicenseEntryPopupForm : Form
     {
-        public LicenseEntryPopupForm(Firearm f)
+        private Firearm currentGun;
+        private Dictionary<Firearm, License> licStore;
+        public LicenseEntryPopupForm(Firearm f, Dictionary<Firearm, License> lics)
         {
             InitializeComponent();
-            headLabel.Text = $"Добавление лицензии для {f.Name} в заказе {f.OrderId}";
-            switch(f.Type)
+            currentGun = f;
+            licStore = lics;
+            headLabel.Text = $"Добавление лицензии для {currentGun.Name} в заказе {currentGun.TypeId}";
+            switch(currentGun.Type)
             {
                 case FirearmClass.SHOTGUN:
                     label6.Text = "Гладкоствольное оружие";
@@ -32,7 +36,10 @@ namespace GunStore
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            var lic = new License(licNumBox.Text, licNameBox.Text, Convert.ToDateTime(licIssueDateBox.Text),
+                Convert.ToDateTime(licExpiryDateBox.Text), licIssuerBox.Text, currentGun.Type);
+            licStore.Add(currentGun, lic);
+            this.Close();
         }
     }
 }

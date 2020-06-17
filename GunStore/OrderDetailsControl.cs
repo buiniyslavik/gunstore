@@ -14,6 +14,8 @@ namespace GunStore
     {
         int OrderNumber;
         DBController db;
+        List<Firearm> guns = new List<Firearm>();
+        Dictionary<Firearm, License> licenses = new Dictionary<Firearm, License>();
         public OrderDetailsControl(int orderNumber)
         {
             InitializeComponent();
@@ -33,18 +35,30 @@ namespace GunStore
            
         }
 
-        private FirearmClass isAFirearm(DataGridViewRow r)
+        private FirearmClass fillFirearms(DataGridViewRow r, bool fillList)
         {
             if (r.Cells["номерТипаГсDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
             {
+                if(fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
+                                     Convert.ToInt32(r.Cells["номерТипаГсDataGridViewTextBoxColumn"].Value),
+                                     -1,
+                                     FirearmClass.SHOTGUN));
                 return FirearmClass.SHOTGUN;
             }
             if (r.Cells["номерТипаНарDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
             {
+                if (fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
+                                     Convert.ToInt32(r.Cells["номерТипаНарDataGridViewTextBoxColumn"].Value),
+                                     -1,
+                                     FirearmClass.RIFLE));
                 return FirearmClass.RIFLE;
             }
             if (r.Cells["номерТипаОоопDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
             {
+                if (fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
+                                     Convert.ToInt32(r.Cells["номерТипаОоопDataGridViewTextBoxColumn"].Value),
+                                     -1,
+                                     FirearmClass.LESSLETHAL));
                 return FirearmClass.LESSLETHAL;
             }
             return FirearmClass.NOTAGUN;
@@ -61,14 +75,14 @@ namespace GunStore
         }
 
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
+        {            
             using (DataGridViewCheckBoxCell c = new DataGridViewCheckBoxCell())
             {
                 c.TrueValue = true;
                 c.FalseValue = false;
                 foreach (DataGridViewRow r in dataGridView1.Rows)
                 {
-                    switch (isAFirearm(r))
+                    switch (fillFirearms(r, true))
                     {
                         case FirearmClass.SHOTGUN:
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
@@ -90,6 +104,36 @@ namespace GunStore
                     }
                 }
             }
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToBoolean(dataGridView1.SelectedRows[0].Cells["IsAGunColumn"].Value))
+                    LicensesBtn.Enabled = true;
+                else
+                    LicensesBtn.Enabled = false;
+            }
+            catch { }
+        }
+
+        private void LicensesBtn_Click(object sender, EventArgs e)
+        {
+            var gun = Firearm.ParseFromRow(dataGridView1.SelectedRows[0]);            
+            var LicEntryWindow = new LicenseEntryPopupForm(gun, licenses);
+            LicEntryWindow.ShowDialog();
+            try
+            {
+                License result = licenses[gun];
+                MessageBox.Show(result.ToString());
+                // TODO: add license to DB and tie it to the gun
+            }
+            catch
+            { //in case the entry window got closed
+                // do absolutely nothing
+            }
+            
         }
     }
 }

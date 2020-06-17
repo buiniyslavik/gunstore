@@ -158,12 +158,14 @@
             // 
             // LicensesBtn
             // 
+            this.LicensesBtn.Enabled = false;
             this.LicensesBtn.Location = new System.Drawing.Point(11, 448);
             this.LicensesBtn.Name = "LicensesBtn";
             this.LicensesBtn.Size = new System.Drawing.Size(114, 23);
             this.LicensesBtn.TabIndex = 15;
             this.LicensesBtn.Text = "Лицензии";
             this.LicensesBtn.UseVisualStyleBackColor = true;
+            this.LicensesBtn.Click += new System.EventHandler(this.LicensesBtn_Click);
             // 
             // dataGridView1
             // 
@@ -190,6 +192,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(764, 391);
             this.dataGridView1.TabIndex = 16;
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // товарыВЗаказахBindingSource
             // 

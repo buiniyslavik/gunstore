@@ -22,7 +22,7 @@ namespace GunStore
         private void button1_Click(object sender, EventArgs e)
         {
             dbc.CreateMerch(NameTextBox.Text, DescriptionTextBox.Text, Convert.ToDecimal(priceTextBox.Text), Convert.ToInt32(numericUpDown1.Text));
-            FindForm().Close();
+            this.Close();
         }
 
         private void priceTextBox_Validating(object sender, CancelEventArgs e)
