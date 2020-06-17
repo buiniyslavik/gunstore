@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace GunStore
@@ -26,9 +26,11 @@ namespace GunStore
 
         private void refresh()
         {
+
             товарыВЗаказахTableAdapter1.Fill(gunstoreDataSet.ТоварыВЗаказах, OrderNumber);
             dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             totalBox.Text = db.GetOrderTotal(OrderNumber).ToString();
+           
         }
 
         private void addToOrderBtn_Click(object sender, EventArgs e)
@@ -39,6 +41,29 @@ namespace GunStore
             addPopup.Controls.Add(new AddMerchToOrder(OrderNumber));
             addPopup.ShowDialog();
             refresh();
+        }
+
+        private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewRow r in dataGridView1.Rows)
+            {
+                 if(r.Cells["номерТипаГсDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
+                 {
+                     r.DefaultCellStyle.BackColor = Color.LightGreen;
+                     r.DefaultCellStyle.SelectionBackColor = Color.Green;
+                 }
+                if (r.Cells["номерТипаНарDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
+                {
+                    r.DefaultCellStyle.BackColor = Color.LightPink;
+                    r.DefaultCellStyle.SelectionBackColor = Color.Red;
+                }
+                if (r.Cells["номерТипаОоопDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
+                {
+                    r.DefaultCellStyle.BackColor = Color.LightCyan;
+                    r.DefaultCellStyle.SelectionBackColor = Color.Blue;
+                }
+
+            }
         }
     }
 }

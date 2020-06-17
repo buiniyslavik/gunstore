@@ -69,6 +69,7 @@
       <DependentUpon>CustomersUC.cs</DependentUpon>
     </Compile>
     <Compile Include="DBController.cs" />
+    <Compile Include="Firearm.cs" />
     <Compile Include="GunsInOrderUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
