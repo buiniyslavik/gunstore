@@ -199,13 +199,13 @@ namespace GunStore
                         cmd.ExecuteNonQuery();
                         break;
                     case FirearmClass.RIFLE:
-                        cmd.CommandText = "exec ОтпуститьОружиеГс @gunid, @licid";
+                        cmd.CommandText = "exec ОтпуститьОружиеНар @gunid, @licid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
                         cmd.ExecuteNonQuery();
                         break;
                     case FirearmClass.LESSLETHAL:
-                        cmd.CommandText = "exec ОтпуститьОружиеГс @gunid, @licid";
+                        cmd.CommandText = "exec ОтпуститьОружиеОооп @gunid, @licid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
                         cmd.ExecuteNonQuery();
