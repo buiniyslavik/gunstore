@@ -251,33 +251,36 @@ namespace GunStore
             }
             return i;
         }
-        /*
+        
         public void BindGunToOrder(int orderId, Firearm gun)
         {
-            switch (gun.Type)
+            using (var cmd = DbConn.CreateCommand())
             {
-                case FirearmClass.SHOTGUN:
-                    cmd.CommandText = "exec ДобавитьГсВЗаказ @oid, @gid";
-                    cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
-                    cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
-                    cmd.ExecuteNonQuery();
-                    break;
-                case FirearmClass.RIFLE:
-                    cmd.CommandText = "exec ОтпуститьОружиеГс @gunid @licid";
-                    cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
-                    cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
-                    cmd.ExecuteNonQuery();
-                    break;
-                case FirearmClass.LESSLETHAL:
-                    cmd.CommandText = "exec ОтпуститьОружиеГс @gunid @licid";
-                    cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
-                    cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
-                    cmd.ExecuteNonQuery();
-                    break;
-                case FirearmClass.NOTAGUN:
-                    throw new Exception("Разрешаю и так!");
+                switch (gun.Type)
+                {
+                    case FirearmClass.SHOTGUN:
+                        cmd.CommandText = "exec ДобавитьГсВЗаказ @oid, @gid";
+                        cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
+                        cmd.Parameters.Add("@gid", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.RIFLE:
+                        cmd.CommandText = "exec ДобавитьНарВЗаказ @oid, @gid";
+                        cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
+                        cmd.Parameters.Add("@gid", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.LESSLETHAL:
+                        cmd.CommandText = "exec ДобавитьОоопВЗаказ @oid, @gid";
+                        cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
+                        cmd.Parameters.Add("@gid", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.NOTAGUN:
+                        throw new Exception("Разрешаю и так!");
+                }
             }
-        } */
+        } 
     }
 }
 
