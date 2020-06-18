@@ -107,10 +107,14 @@ namespace GunStore
                 }
 
             }
-            if (Convert.ToBoolean(dataGridView1.SelectedRows[0].Cells["IsAGunColumn"].Value))
-                LicensesBtn.Enabled = true;
-            else
-                LicensesBtn.Enabled = false;
+            try
+            {
+                if (Convert.ToBoolean(dataGridView1.SelectedRows[0].Cells["IsAGunColumn"].Value))
+                    LicensesBtn.Enabled = true;
+                else
+                    LicensesBtn.Enabled = false;
+            }
+            catch { }
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -131,24 +135,25 @@ namespace GunStore
             gun.PieceId = db.GetUnusedGun(gun.Type);
             var LicEntryWindow = new LicenseEntryPopupForm(gun, licenses);
             LicEntryWindow.ShowDialog();
-            try
+         //   try
             {
                 License result = licenses[gun];
                 
                 using (TransactionScope tran = new TransactionScope())
                 {
-                    db.BindGunToOrder(OrderNumber, gun);
+                    db.AddFirearmToOrder(OrderNumber, gun);
                     db.AddLicense(result);
                     db.BindLicense(result, gun);
                     // TODO show the lic in the window
-                    throw new NotImplementedException();
+                    //throw new NotImplementedException();
+                    tran.Complete();
                 }
             }
-            catch (SqlException sqlex)
+          //  catch (SqlException sqlex)
             {
-                MessageBox.Show($"base's fucked: {sqlex.Message}");
+        //        MessageBox.Show($"base's fucked: {sqlex.Message}");
             }
-            catch
+         //   catch
             { //in case the entry window got closed
                 // do absolutely nothing
             }

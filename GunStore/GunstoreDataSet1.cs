@@ -7,3 +7,10 @@
     }
 }
 
+
+namespace GunStore.GunstoreDataSetTableAdapters {
+    
+    
+    public partial class ТоварыВЗаказахTableAdapter {
+    }
+}
