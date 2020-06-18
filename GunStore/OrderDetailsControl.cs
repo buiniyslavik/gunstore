@@ -105,7 +105,12 @@ namespace GunStore
                             break;
                     }
                 }
+
             }
+            if (Convert.ToBoolean(dataGridView1.SelectedRows[0].Cells["IsAGunColumn"].Value))
+                LicensesBtn.Enabled = true;
+            else
+                LicensesBtn.Enabled = false;
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)

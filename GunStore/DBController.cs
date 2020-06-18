@@ -123,7 +123,7 @@ namespace GunStore
                 switch (l.Type)
                 {
                     case FirearmClass.SHOTGUN:
-                        cmd.CommandText = "exec ДобавитьЛицензиюГс @licnum @owner @issued @expires @issby";
+                        cmd.CommandText = "exec ДобавитьЛицензиюГс @licnum, @owner, @issued, @expires, @issby";
                         cmd.Parameters.Add("@licnum", SqlDbType.VarChar).Value = l.Number;
                         cmd.Parameters.Add("@owner", SqlDbType.NVarChar).Value = l.HolderName;
                         cmd.Parameters.Add("@issued", SqlDbType.Date).Value = l.IssueDate;
@@ -133,7 +133,7 @@ namespace GunStore
 
                         break;
                     case FirearmClass.RIFLE:
-                        cmd.CommandText = "exec ДобавитьЛицензиюНар @licnum @owner @issued @expires @issby";
+                        cmd.CommandText = "exec ДобавитьЛицензиюНар @licnum, @owner, @issued, @expires, @issby";
                         cmd.Parameters.Add("@licnum", SqlDbType.VarChar).Value = l.Number;
                         cmd.Parameters.Add("@owner", SqlDbType.NVarChar).Value = l.HolderName;
                         cmd.Parameters.Add("@issued", SqlDbType.Date).Value = l.IssueDate;
@@ -142,7 +142,7 @@ namespace GunStore
                         cmd.ExecuteNonQuery();
                         break;
                     case FirearmClass.LESSLETHAL:
-                        cmd.CommandText = "exec ДобавитьЛицензиюОООП @licnum @owner @issued @expires @issby";
+                        cmd.CommandText = "exec ДобавитьЛицензиюОООП @licnum, @owner, @issued, @expires, @issby";
                         cmd.Parameters.Add("@licnum", SqlDbType.VarChar).Value = l.Number;
                         cmd.Parameters.Add("@owner", SqlDbType.NVarChar).Value = l.HolderName;
                         cmd.Parameters.Add("@issued", SqlDbType.Date).Value = l.IssueDate;
@@ -164,19 +164,19 @@ namespace GunStore
                 switch (gun.Type)
                 {
                     case FirearmClass.SHOTGUN:
-                        cmd.CommandText = "exec ДобавитьГсВЗаказ @gunid @orderid";
+                        cmd.CommandText = "exec ДобавитьГсВЗаказ @gunid, @orderid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@orderid", SqlDbType.Int).Value = orderId;                       
                         cmd.ExecuteNonQuery();
                         break;
                     case FirearmClass.RIFLE:
-                        cmd.CommandText = "exec ДобавитьНарВЗаказ @gunid @orderid";
+                        cmd.CommandText = "exec ДобавитьНарВЗаказ @gunid, @orderid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@orderid", SqlDbType.Int).Value = orderId;
                         cmd.ExecuteNonQuery();
                         break;
                     case FirearmClass.LESSLETHAL:
-                        cmd.CommandText = "exec ДобавитьОоопВЗаказ @gunid @orderid";
+                        cmd.CommandText = "exec ДобавитьОоопВЗаказ @gunid, @orderid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@orderid", SqlDbType.Int).Value = orderId;
                         cmd.ExecuteNonQuery();
@@ -193,19 +193,19 @@ namespace GunStore
                 switch (gun.Type)
                 {
                     case FirearmClass.SHOTGUN:
-                        cmd.CommandText = "exec ОтпуститьОружиеГс @gunid @licid";
+                        cmd.CommandText = "exec ОтпуститьОружиеГс @gunid, @licid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
                         cmd.ExecuteNonQuery();
                         break;
                     case FirearmClass.RIFLE:
-                        cmd.CommandText = "exec ОтпуститьОружиеГс @gunid @licid";
+                        cmd.CommandText = "exec ОтпуститьОружиеГс @gunid, @licid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
                         cmd.ExecuteNonQuery();
                         break;
                     case FirearmClass.LESSLETHAL:
-                        cmd.CommandText = "exec ОтпуститьОружиеГс @gunid @licid";
+                        cmd.CommandText = "exec ОтпуститьОружиеГс @gunid, @licid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
                         cmd.ExecuteNonQuery();
@@ -251,6 +251,33 @@ namespace GunStore
             }
             return i;
         }
+        /*
+        public void BindGunToOrder(int orderId, Firearm gun)
+        {
+            switch (gun.Type)
+            {
+                case FirearmClass.SHOTGUN:
+                    cmd.CommandText = "exec ДобавитьГсВЗаказ @oid, @gid";
+                    cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
+                    cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
+                    cmd.ExecuteNonQuery();
+                    break;
+                case FirearmClass.RIFLE:
+                    cmd.CommandText = "exec ОтпуститьОружиеГс @gunid @licid";
+                    cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
+                    cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
+                    cmd.ExecuteNonQuery();
+                    break;
+                case FirearmClass.LESSLETHAL:
+                    cmd.CommandText = "exec ОтпуститьОружиеГс @gunid @licid";
+                    cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
+                    cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
+                    cmd.ExecuteNonQuery();
+                    break;
+                case FirearmClass.NOTAGUN:
+                    throw new Exception("Разрешаю и так!");
+            }
+        } */
     }
 }
 
