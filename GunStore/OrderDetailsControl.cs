@@ -137,6 +137,7 @@ namespace GunStore
                 
                 using (TransactionScope tran = new TransactionScope())
                 {
+                    db.BindGunToOrder(OrderNumber, gun);
                     db.AddLicense(result);
                     db.BindLicense(result, gun);
                     // TODO show the lic in the window
