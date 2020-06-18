@@ -280,7 +280,48 @@ namespace GunStore
                         throw new Exception("Разрешаю и так!");
                 }
             }
-        } 
+        }
+        
+        public int GetFirearmIdForAnOrder(int orderId, Firearm gun)
+        {
+            int i = -1;
+            using (var cmd = DbConn.CreateCommand())
+            {
+                switch (gun.Type)
+                {
+                    case FirearmClass.SHOTGUN:
+                        cmd.CommandText = "exec НомерЕдиницыВЗаказеГс @oid @tid @id output";
+                        cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
+                        cmd.Parameters.Add("@tid", SqlDbType.Int).Value = gun.TypeId;
+                        cmd.Parameters.Add("@id", SqlDbType.Int);
+                        cmd.Parameters["@id"].Direction = ParameterDirection.Output;
+                        cmd.ExecuteNonQuery();
+                        i = Convert.ToInt32(cmd.Parameters["@id"].Value);
+                        break;
+                    case FirearmClass.RIFLE:
+                        cmd.CommandText = "exec НомерЕдиницыВЗаказеНар @oid @tid @id output";
+                        cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
+                        cmd.Parameters.Add("@tid", SqlDbType.Int).Value = gun.TypeId;
+                        cmd.Parameters.Add("@id", SqlDbType.Int);
+                        cmd.Parameters["@id"].Direction = ParameterDirection.Output;
+                        cmd.ExecuteNonQuery();
+                        i = Convert.ToInt32(cmd.Parameters["@id"].Value);
+                        break;
+                    case FirearmClass.LESSLETHAL:
+                        cmd.CommandText = "exec НомерЕдиницыВЗаказеОооп @oid @tid @id output";
+                        cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
+                        cmd.Parameters.Add("@tid", SqlDbType.Int).Value = gun.TypeId;
+                        cmd.Parameters.Add("@id", SqlDbType.Int);
+                        cmd.Parameters["@id"].Direction = ParameterDirection.Output;
+                        cmd.ExecuteNonQuery();
+                        i = Convert.ToInt32(cmd.Parameters["@id"].Value);
+                        break;
+                    case FirearmClass.NOTAGUN:
+                        throw new Exception("Разрешаю и так!");
+                }
+            }
+                return i;
+        }
     }
 }
 
