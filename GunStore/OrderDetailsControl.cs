@@ -177,19 +177,22 @@ namespace GunStore
             // 3. process the checkout
             try
             {
-                foreach (Firearm f in guns)
+                using (TransactionScope tran = new TransactionScope())
                 {
-                    f.PieceId = db.GetUnusedGun(f.Type);
-                    db.AddFirearmToOrder(OrderNumber, f);
-                    License lic = AskForLicense(f);
-                    db.BindLicense(lic, f);
-                    
+                    foreach (Firearm f in guns)
+                    {
+                        f.PieceId = db.GetUnusedGun(f.Type);
+                        db.AddFirearmToOrder(OrderNumber, f);
+                        License lic = AskForLicense(f);
+                        db.BindLicense(lic, f);
+
+                    }
+                    // db.CompleteOrder(OrderNumber);
                 }
-                // db.CompleteOrder(OrderNumber);
             }
             catch (ApplicationException ex)
             {
-                MessageBox.Show("Заполнение прервано - заказ не завершен!")
+                MessageBox.Show("Заполнение прервано - заказ не завершен!");
             }
         }
     }
