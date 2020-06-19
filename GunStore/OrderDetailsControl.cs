@@ -39,6 +39,7 @@ namespace GunStore
 
         private FirearmClass fillFirearms(DataGridViewRow r, bool fillList)
         {
+            if(fillList) guns.Clear();   
             if (r.Cells["номерТипаГсDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
             {
                 if(fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
@@ -107,31 +108,31 @@ namespace GunStore
                 }
 
             }
-            try
+         /*   try
             {
                 if (Convert.ToBoolean(dataGridView1.SelectedRows[0].Cells["IsAGunColumn"].Value))
                     LicensesBtn.Enabled = true;
                 else
                     LicensesBtn.Enabled = false;
             }
-            catch { }
+            catch { } */
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            try
+           /* try
             {
                 if (Convert.ToBoolean(dataGridView1.SelectedRows[0].Cells["IsAGunColumn"].Value))
                     LicensesBtn.Enabled = true;
                 else
                     LicensesBtn.Enabled = false;
             }
-            catch { }
+            catch { } */
         }
 
         private void LicensesBtn_Click(object sender, EventArgs e)
         {
-            var gun = Firearm.ParseFromRow(dataGridView1.SelectedRows[0]);
+        /*    var gun = Firearm.ParseFromRow(dataGridView1.SelectedRows[0]);
             gun.PieceId = db.GetUnusedGun(gun.Type);
             var LicEntryWindow = new LicenseEntryPopupForm(gun, licenses);
             LicEntryWindow.ShowDialog();
@@ -157,7 +158,39 @@ namespace GunStore
             { //in case the entry window got closed
                 // do absolutely nothing
             }
-            
+            */
+        }
+
+        private License AskForLicense(Firearm f)
+        {
+            License lic = new License(f.Type);
+            LicenseEntryPopupForm licForm = new LicenseEntryPopupForm(f, lic);
+            licForm.ShowDialog();
+            return lic;         
+        }
+
+        private void ConfirmOrderBtn_Click(object sender, EventArgs e)
+        {
+            //TODO
+            // 1. bind every gun to order
+            // 2. ask for licenses
+            // 3. process the checkout
+            try
+            {
+                foreach (Firearm f in guns)
+                {
+                    f.PieceId = db.GetUnusedGun(f.Type);
+                    db.AddFirearmToOrder(OrderNumber, f);
+                    License lic = AskForLicense(f);
+                    db.BindLicense(lic, f);
+                    
+                }
+                // db.CompleteOrder(OrderNumber);
+            }
+            catch (ApplicationException ex)
+            {
+                MessageBox.Show("Заполнение прервано - заказ не завершен!")
+            }
         }
     }
 }

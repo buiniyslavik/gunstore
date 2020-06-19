@@ -13,12 +13,12 @@ namespace GunStore
     public partial class LicenseEntryPopupForm : Form
     {
         private Firearm currentGun;
-        private Dictionary<Firearm, License> licStore;
-        public LicenseEntryPopupForm(Firearm f, Dictionary<Firearm, License> lics)
+        private License tempLic;
+        public LicenseEntryPopupForm(Firearm f, License lic)
         {
             InitializeComponent();
             currentGun = f;
-            licStore = lics;
+            tempLic = lic;
             headLabel.Text = $"Добавление лицензии для {currentGun.Name} в заказе {currentGun.TypeId}";
             switch(currentGun.Type)
             {
@@ -36,10 +36,21 @@ namespace GunStore
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var lic = new License(licNumBox.Text, licNameBox.Text, Convert.ToDateTime(licIssueDateBox.Text),
-                Convert.ToDateTime(licExpiryDateBox.Text), licIssuerBox.Text, currentGun.Type);
-            licStore.Add(currentGun, lic);
+            //tempLic = new License(licNumBox.Text, licNameBox.Text, Convert.ToDateTime(licIssueDateBox.Text),
+            //Convert.ToDateTime(licExpiryDateBox.Text), licIssuerBox.Text, currentGun.Type);
+
+            // licStore.Add(currentGun, lic);
+            tempLic.Number = licNumBox.Text;
+            tempLic.HolderName = licNameBox.Text;
+            tempLic.IssueDate = Convert.ToDateTime(licIssueDateBox.Text);
+            tempLic.ExpiryDate = Convert.ToDateTime(licExpiryDateBox.Text);
+            tempLic.Issuer = licIssuerBox.Text;
             this.Close();
+        }
+
+        private void LicenseEntryPopupForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing) throw new ApplicationException("License entry aborted, cannot continue checkout");
         }
     }
 }

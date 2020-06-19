@@ -176,6 +176,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LicenseEntryPopupForm";
             this.Text = "LicenseEntryPopupForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LicenseEntryPopupForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
