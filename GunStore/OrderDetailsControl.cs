@@ -39,7 +39,7 @@ namespace GunStore
 
         private FirearmClass fillFirearms(DataGridViewRow r, bool fillList)
         {
-            if(fillList) guns.Clear();   
+            //if(fillList) guns.Clear();   
             if (r.Cells["номерТипаГсDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
             {
                 if(fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
@@ -83,6 +83,7 @@ namespace GunStore
             {
                 c.TrueValue = true;
                 c.FalseValue = false;
+                guns.Clear();
                 foreach (DataGridViewRow r in dataGridView1.Rows)
                 {
                     switch (fillFirearms(r, true))
@@ -175,25 +176,31 @@ namespace GunStore
             // 1. bind every gun to order
             // 2. ask for licenses
             // 3. process the checkout
-            try
+            using (TransactionScope tran = new TransactionScope())
             {
-                using (TransactionScope tran = new TransactionScope())
+               try
                 {
                     foreach (Firearm f in guns)
                     {
                         f.PieceId = db.GetUnusedGun(f.Type);
                         db.AddFirearmToOrder(OrderNumber, f);
                         License lic = AskForLicense(f);
+                        db.AddLicense(lic);
                         db.BindLicense(lic, f);
 
                     }
                     db.CompleteOrder(OrderNumber);
+                    tran.Complete();
+                    MessageBox.Show("Заказ закрыт");
+                }
+                
+                catch (ApplicationException ex)
+                {
+                    tran.Dispose();
+                    MessageBox.Show("Заполнение прервано - заказ не завершен!");
                 }
             }
-            catch (ApplicationException ex)
-            {
-                MessageBox.Show("Заполнение прервано - заказ не завершен!");
-            }
+            
         }
     }
 }
