@@ -107,7 +107,7 @@
             this.licIssuerBox.Location = new System.Drawing.Point(105, 146);
             this.licIssuerBox.Name = "licIssuerBox";
             this.licIssuerBox.Size = new System.Drawing.Size(295, 20);
-            this.licIssuerBox.TabIndex = 10;
+            this.licIssuerBox.TabIndex = 7;
             // 
             // label5
             // 
@@ -124,7 +124,7 @@
             this.licIssueDateBox.Mask = "00/00/0000";
             this.licIssueDateBox.Name = "licIssueDateBox";
             this.licIssueDateBox.Size = new System.Drawing.Size(295, 20);
-            this.licIssueDateBox.TabIndex = 11;
+            this.licIssueDateBox.TabIndex = 5;
             this.licIssueDateBox.ValidatingType = typeof(System.DateTime);
             // 
             // licExpiryDateBox
@@ -133,7 +133,7 @@
             this.licExpiryDateBox.Mask = "00/00/0000";
             this.licExpiryDateBox.Name = "licExpiryDateBox";
             this.licExpiryDateBox.Size = new System.Drawing.Size(295, 20);
-            this.licExpiryDateBox.TabIndex = 12;
+            this.licExpiryDateBox.TabIndex = 6;
             this.licExpiryDateBox.ValidatingType = typeof(System.DateTime);
             // 
             // button1
@@ -141,7 +141,7 @@
             this.button1.Location = new System.Drawing.Point(4, 172);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(396, 23);
-            this.button1.TabIndex = 13;
+            this.button1.TabIndex = 10;
             this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -176,6 +176,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LicenseEntryPopupForm";
             this.Text = "LicenseEntryPopupForm";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LicenseEntryPopupForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
