@@ -323,6 +323,16 @@ namespace GunStore
             }
                 return i;
         }
+
+        public void CompleteOrder(int orderId)
+        {
+            using (var cmd = DbConn.CreateCommand())
+            {
+                cmd.CommandText = "exec ЗавершитьЗаказ @oid";
+                cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
 

@@ -187,7 +187,7 @@ namespace GunStore
                         db.BindLicense(lic, f);
 
                     }
-                    // db.CompleteOrder(OrderNumber);
+                    db.CompleteOrder(OrderNumber);
                 }
             }
             catch (ApplicationException ex)
