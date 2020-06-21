@@ -17,11 +17,23 @@ namespace GunStore
         public OrderListUc()
         {
             InitializeComponent();
+            
         }
         private void refresh()
         {
             заказыTableAdapter.Fill(gunstoreDataSet.Заказы);
             dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            dataGridView1.SelectedRows[0].Selected = false;
+
+            var currencyManager1 = (CurrencyManager)BindingContext[dataGridView1.DataSource];
+            currencyManager1.SuspendBinding();
+            if (!showCompleteCheckBox.Checked)
+                foreach(DataGridViewRow r in dataGridView1.Rows)
+                {
+                    if (r.Cells["статусЗаказаDataGridViewTextBoxColumn"].Value.ToString() == "Завершен")
+                        r.Visible = false;
+                }
+            currencyManager1.ResumeBinding();
         }
 
         private void OrderListUc_Load(object sender, EventArgs e)
@@ -55,6 +67,16 @@ namespace GunStore
                 }
             }
             catch { }
+        }
+
+        private void showCompleteCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void showCompleteCheckBox_CheckStateChanged(object sender, EventArgs e)
+        {
+            refresh();
         }
     }
 }

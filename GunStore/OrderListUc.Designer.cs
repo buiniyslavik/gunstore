@@ -40,6 +40,7 @@
             this.gunstoreDataSet = new GunStore.GunstoreDataSet();
             this.заказыTableAdapter = new GunStore.GunstoreDataSetTableAdapters.ЗаказыTableAdapter();
             this.editOrderBtn = new System.Windows.Forms.Button();
+            this.showCompleteCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.заказыBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).BeginInit();
@@ -135,10 +136,25 @@
             this.editOrderBtn.UseVisualStyleBackColor = true;
             this.editOrderBtn.Click += new System.EventHandler(this.editOrderBtn_Click);
             // 
+            // showCompleteCheckBox
+            // 
+            this.showCompleteCheckBox.AutoSize = true;
+            this.showCompleteCheckBox.Checked = true;
+            this.showCompleteCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showCompleteCheckBox.Location = new System.Drawing.Point(228, 4);
+            this.showCompleteCheckBox.Name = "showCompleteCheckBox";
+            this.showCompleteCheckBox.Size = new System.Drawing.Size(162, 17);
+            this.showCompleteCheckBox.TabIndex = 4;
+            this.showCompleteCheckBox.Text = "Показывать завершённые";
+            this.showCompleteCheckBox.UseVisualStyleBackColor = true;
+            this.showCompleteCheckBox.CheckedChanged += new System.EventHandler(this.showCompleteCheckBox_CheckedChanged);
+            this.showCompleteCheckBox.CheckStateChanged += new System.EventHandler(this.showCompleteCheckBox_CheckStateChanged);
+            // 
             // OrderListUc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.showCompleteCheckBox);
             this.Controls.Add(this.editOrderBtn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
@@ -167,5 +183,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn статусЗаказаDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn суммаЗаказаDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button editOrderBtn;
+        private System.Windows.Forms.CheckBox showCompleteCheckBox;
     }
 }
