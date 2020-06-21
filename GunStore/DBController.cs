@@ -354,6 +354,33 @@ namespace GunStore
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void LockFirearm(Firearm gun)
+        {
+            using (var cmd = DbConn.CreateCommand())
+            {
+                switch (gun.Type)
+                {
+                    case FirearmClass.SHOTGUN:
+                        cmd.CommandText = "exec ЗанятьЕдиницуГс @id";                       
+                        cmd.Parameters.Add("@id", SqlDbType.Int).Value = gun.PieceId;                        
+                        cmd.ExecuteNonQuery();                        
+                        break;
+                    case FirearmClass.RIFLE:
+                        cmd.CommandText = "exec ЗанятьЕдиницуНар @id";
+                        cmd.Parameters.Add("@id", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.LESSLETHAL:
+                        cmd.CommandText = "exec ЗанятьЕдиницуОооп @id";
+                        cmd.Parameters.Add("@id", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.ExecuteNonQuery();
+                        break;
+                    case FirearmClass.NOTAGUN:
+                        throw new Exception("Разрешаю и так!");
+                }
+            }
+        }
     }
 }
 

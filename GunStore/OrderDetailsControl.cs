@@ -39,18 +39,24 @@ namespace GunStore
 
         private FirearmClass fillFirearms(DataGridViewRow r, bool fillList)
         {
+            int amount = Convert.ToInt32(r.Cells["количествоDataGridViewTextBoxColumn"].Value);
             //if(fillList) guns.Clear();   
             if (r.Cells["номерТипаГсDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
             {
-                if(fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
-                                     Convert.ToInt32(r.Cells["номерТипаГсDataGridViewTextBoxColumn"].Value),
-                                     -1,
-                                     FirearmClass.SHOTGUN));
+                if (fillList)
+                {
+                    for (int i = 0; i < amount; i++)
+                        guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
+                                 Convert.ToInt32(r.Cells["номерТипаГсDataGridViewTextBoxColumn"].Value),
+                                 -1,
+                                 FirearmClass.SHOTGUN));
+                }
                 return FirearmClass.SHOTGUN;
             }
             if (r.Cells["номерТипаНарDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
             {
-                if (fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
+                for (int i = 0; i < amount; i++)
+                    if (fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
                                      Convert.ToInt32(r.Cells["номерТипаНарDataGridViewTextBoxColumn"].Value),
                                      -1,
                                      FirearmClass.RIFLE));
@@ -58,7 +64,8 @@ namespace GunStore
             }
             if (r.Cells["номерТипаОоопDataGridViewTextBoxColumn"].Value.ToString() != String.Empty)
             {
-                if (fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
+                for (int i = 0; i < amount; i++)
+                    if (fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
                                      Convert.ToInt32(r.Cells["номерТипаОоопDataGridViewTextBoxColumn"].Value),
                                      -1,
                                      FirearmClass.LESSLETHAL));
@@ -176,8 +183,7 @@ namespace GunStore
             // 1. bind every gun to order
             // 2. ask for licenses
             // 3. process the checkout
-            using (TransactionScope tran = new TransactionScope())
-            {
+            
                try
                 {
                     var pendingGuns = new List<Firearm>();
@@ -186,6 +192,7 @@ namespace GunStore
                     {
                         f.PieceId = db.GetUnusedGun(f.Type);
                         License lic = AskForLicense(f);
+                        db.LockFirearm(f);
                         pendingGuns.Add(f);
                         pendingLics.Add(f, lic);
 
@@ -198,16 +205,15 @@ namespace GunStore
                         db.BindLicense(lic, f);
                     }
                     db.CompleteOrder(OrderNumber);
-                    tran.Complete();
                     MessageBox.Show("Заказ закрыт");
                 }
                 
                 catch (ApplicationException ex)
                 {
-                    tran.Dispose();
+                    
                     MessageBox.Show("Заполнение прервано - заказ не завершен!");
                 }
-            }
+            
             
         }
 
