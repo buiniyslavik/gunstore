@@ -57,14 +57,7 @@ namespace GunStore
             return new Firearm(name, typeId, piece, type);
         }
     }
-    /*
-    public enum LicenseClass : int
-    {
-        SHOTGUN = 0,
-        RIFLE = 1,
-        LESSLETHAL = 2,
-        NOTAGUN = -1
-    } */
+    
 
     public sealed class License
     {        
