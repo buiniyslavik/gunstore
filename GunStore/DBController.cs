@@ -335,11 +335,22 @@ namespace GunStore
         }
 
         public void DeleteOrder(int orderId)
+        {        
+                using (var cmd = DbConn.CreateCommand())
+                {
+                    cmd.CommandText = "exec УдалитьЗаказ @oid";
+                    cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
+                    cmd.ExecuteNonQuery();
+                }                   
+        }
+
+        public void DeleteMerchFromOrder(int orderId, int itemId)
         {
             using (var cmd = DbConn.CreateCommand())
             {
-                cmd.CommandText = "exec УдалитьЗаказ @oid";
+                cmd.CommandText = "exec УдалитьТоварИзЗаказа @oid, @mid";
                 cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
+                cmd.Parameters.Add("@mid", SqlDbType.Int).Value = itemId;
                 cmd.ExecuteNonQuery();
             }
         }

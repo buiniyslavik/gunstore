@@ -213,12 +213,24 @@ namespace GunStore
 
         private void cancelOrderBtn_Click(object sender, EventArgs e)
         {
-            db.DeleteOrder(OrderNumber);
-            MessageBox.Show("Заказ удалён");
-            dataGridView1.Enabled = false;
-            cancelOrderBtn.Enabled = false;
-            addToOrderBtn.Enabled = false;
-            ConfirmOrderBtn.Enabled = false;
+            try
+            {
+                db.DeleteOrder(OrderNumber);
+                MessageBox.Show("Заказ удалён");
+                dataGridView1.Enabled = false;
+                cancelOrderBtn.Enabled = false;
+                addToOrderBtn.Enabled = false;
+                ConfirmOrderBtn.Enabled = false;
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show($"Ошибка удаления заказа:\n {ex.Message}");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.createOrderBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.номерЗаказаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ФИО = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,15 +54,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Список заказов";
             // 
-            // createOrderBtn
-            // 
-            this.createOrderBtn.Location = new System.Drawing.Point(431, 4);
-            this.createOrderBtn.Name = "createOrderBtn";
-            this.createOrderBtn.Size = new System.Drawing.Size(75, 23);
-            this.createOrderBtn.TabIndex = 1;
-            this.createOrderBtn.Text = "Создать";
-            this.createOrderBtn.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -78,12 +68,13 @@
             this.суммаЗаказаDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.заказыBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 95);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 32);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(677, 435);
+            this.dataGridView1.Size = new System.Drawing.Size(677, 498);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // номерЗаказаDataGridViewTextBoxColumn
             // 
@@ -136,9 +127,9 @@
             // 
             // editOrderBtn
             // 
-            this.editOrderBtn.Location = new System.Drawing.Point(512, 4);
+            this.editOrderBtn.Location = new System.Drawing.Point(442, 0);
             this.editOrderBtn.Name = "editOrderBtn";
-            this.editOrderBtn.Size = new System.Drawing.Size(75, 23);
+            this.editOrderBtn.Size = new System.Drawing.Size(232, 23);
             this.editOrderBtn.TabIndex = 3;
             this.editOrderBtn.Text = "Изменить";
             this.editOrderBtn.UseVisualStyleBackColor = true;
@@ -150,7 +141,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.editOrderBtn);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.createOrderBtn);
             this.Controls.Add(this.label1);
             this.Name = "OrderListUc";
             this.Size = new System.Drawing.Size(677, 530);
@@ -167,7 +157,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button createOrderBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource заказыBindingSource;
         private GunstoreDataSet gunstoreDataSet;

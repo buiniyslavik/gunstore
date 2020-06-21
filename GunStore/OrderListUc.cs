@@ -40,5 +40,21 @@ namespace GunStore
         {
             refresh();
         }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.SelectedRows[0].Cells["статусЗаказаDataGridViewTextBoxColumn"].Value.ToString() == "Завершен")
+                {
+                    editOrderBtn.Enabled = false;
+                }
+                else
+                {
+                    editOrderBtn.Enabled = true;
+                }
+            }
+            catch { }
+        }
     }
 }
