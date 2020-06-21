@@ -19,7 +19,7 @@ namespace GunStore
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            tabControl1.TabPages[0].Controls.Add(new OrderListUc());
+            tabControl1.TabPages[0].Controls.Add(new CustomersUC());
         }
 
         private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
