@@ -42,9 +42,6 @@
             this.discountAmountBox = new System.Windows.Forms.TextBox();
             this.LicensesBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.товарыВЗаказахBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gunstoreDataSet = new GunStore.GunstoreDataSet();
-            this.товарыВЗаказахTableAdapter1 = new GunStore.GunstoreDataSetTableAdapters.ТоварыВЗаказахTableAdapter();
             this.артикулDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.количествоDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.названиеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +51,9 @@
             this.номерТипаНарDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.номерТипаОоопDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsAGunColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.товарыВЗаказахBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gunstoreDataSet = new GunStore.GunstoreDataSet();
+            this.товарыВЗаказахTableAdapter1 = new GunStore.GunstoreDataSetTableAdapters.ТоварыВЗаказахTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.товарыВЗаказахBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).BeginInit();
@@ -121,6 +121,7 @@
             this.cancelOrderBtn.TabIndex = 10;
             this.cancelOrderBtn.Text = "Удалить заказ";
             this.cancelOrderBtn.UseVisualStyleBackColor = true;
+            this.cancelOrderBtn.Click += new System.EventHandler(this.cancelOrderBtn_Click);
             // 
             // sumLabel
             // 
@@ -193,20 +194,6 @@
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // товарыВЗаказахBindingSource
-            // 
-            this.товарыВЗаказахBindingSource.DataMember = "ТоварыВЗаказах";
-            this.товарыВЗаказахBindingSource.DataSource = this.gunstoreDataSet;
-            // 
-            // gunstoreDataSet
-            // 
-            this.gunstoreDataSet.DataSetName = "GunstoreDataSet";
-            this.gunstoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // товарыВЗаказахTableAdapter1
-            // 
-            this.товарыВЗаказахTableAdapter1.ClearBeforeFill = true;
-            // 
             // артикулDataGridViewTextBoxColumn
             // 
             this.артикулDataGridViewTextBoxColumn.DataPropertyName = "Артикул";
@@ -272,6 +259,20 @@
             this.IsAGunColumn.Name = "IsAGunColumn";
             this.IsAGunColumn.ReadOnly = true;
             this.IsAGunColumn.Visible = false;
+            // 
+            // товарыВЗаказахBindingSource
+            // 
+            this.товарыВЗаказахBindingSource.DataMember = "ТоварыВЗаказах";
+            this.товарыВЗаказахBindingSource.DataSource = this.gunstoreDataSet;
+            // 
+            // gunstoreDataSet
+            // 
+            this.gunstoreDataSet.DataSetName = "GunstoreDataSet";
+            this.gunstoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // товарыВЗаказахTableAdapter1
+            // 
+            this.товарыВЗаказахTableAdapter1.ClearBeforeFill = true;
             // 
             // OrderDetailsControl
             // 

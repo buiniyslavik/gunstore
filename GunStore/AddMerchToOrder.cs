@@ -25,6 +25,12 @@ namespace GunStore
 
         private void addMerchBtn_Click(object sender, EventArgs e)
         {
+            if(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["остатокDataGridViewTextBoxColumn"].Value) < numericUpDown1.Value)
+            {
+                MessageBox.Show("Недостаточно товара на складе!");
+                return;
+            }
+
             int ItemID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             int Quantity = Convert.ToInt32(numericUpDown1.Value);
             using (TransactionScope tran = new TransactionScope())

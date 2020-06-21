@@ -333,6 +333,16 @@ namespace GunStore
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void DeleteOrder(int orderId)
+        {
+            using (var cmd = DbConn.CreateCommand())
+            {
+                cmd.CommandText = "exec УдалитьЗаказ @oid";
+                cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
 

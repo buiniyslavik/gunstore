@@ -32,13 +32,13 @@
             this.показатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заказыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.товарыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.гладкоствольноеОружиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.нарезноеОружиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оООПToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.товарыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -81,23 +81,40 @@
             this.клиентыToolStripMenuItem.Text = "Клиенты";
             this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
             // 
+            // товарыToolStripMenuItem
+            // 
+            this.товарыToolStripMenuItem.Name = "товарыToolStripMenuItem";
+            this.товарыToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.товарыToolStripMenuItem.Text = "Товары";
+            this.товарыToolStripMenuItem.Click += new System.EventHandler(this.товарыToolStripMenuItem_Click);
+            // 
             // гладкоствольноеОружиеToolStripMenuItem
             // 
+            this.гладкоствольноеОружиеToolStripMenuItem.Enabled = false;
             this.гладкоствольноеОружиеToolStripMenuItem.Name = "гладкоствольноеОружиеToolStripMenuItem";
             this.гладкоствольноеОружиеToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.гладкоствольноеОружиеToolStripMenuItem.Text = "Гладкоствольное оружие";
             // 
             // нарезноеОружиеToolStripMenuItem
             // 
+            this.нарезноеОружиеToolStripMenuItem.Enabled = false;
             this.нарезноеОружиеToolStripMenuItem.Name = "нарезноеОружиеToolStripMenuItem";
             this.нарезноеОружиеToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.нарезноеОружиеToolStripMenuItem.Text = "Нарезное оружие";
             // 
             // оООПToolStripMenuItem
             // 
+            this.оООПToolStripMenuItem.Enabled = false;
             this.оООПToolStripMenuItem.Name = "оООПToolStripMenuItem";
             this.оООПToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
             this.оООПToolStripMenuItem.Text = "ОООП";
+            // 
+            // закрытьToolStripMenuItem
+            // 
+            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.закрытьToolStripMenuItem.Text = "Закрыть";
+            this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
             // tabPage1
             // 
@@ -119,20 +136,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(981, 645);
             this.tabControl1.TabIndex = 0;
-            // 
-            // товарыToolStripMenuItem
-            // 
-            this.товарыToolStripMenuItem.Name = "товарыToolStripMenuItem";
-            this.товарыToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
-            this.товарыToolStripMenuItem.Text = "Товары";
-            this.товарыToolStripMenuItem.Click += new System.EventHandler(this.товарыToolStripMenuItem_Click);
-            // 
-            // закрытьToolStripMenuItem
-            // 
-            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
-            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.закрытьToolStripMenuItem.Text = "Закрыть";
-            this.закрытьToolStripMenuItem.Click += new System.EventHandler(this.закрытьToolStripMenuItem_Click);
             // 
             // Form1
             // 

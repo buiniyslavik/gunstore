@@ -180,14 +180,22 @@ namespace GunStore
             {
                try
                 {
+                    var pendingGuns = new List<Firearm>();
+                    var pendingLics = new Dictionary<Firearm, License>();
                     foreach (Firearm f in guns)
                     {
                         f.PieceId = db.GetUnusedGun(f.Type);
-                        db.AddFirearmToOrder(OrderNumber, f);
                         License lic = AskForLicense(f);
+                        pendingGuns.Add(f);
+                        pendingLics.Add(f, lic);
+
+                    }
+                    foreach(Firearm f in pendingGuns)
+                    {
+                        db.AddFirearmToOrder(OrderNumber, f);
+                        var lic = pendingLics[f];
                         db.AddLicense(lic);
                         db.BindLicense(lic, f);
-
                     }
                     db.CompleteOrder(OrderNumber);
                     tran.Complete();
@@ -201,6 +209,16 @@ namespace GunStore
                 }
             }
             
+        }
+
+        private void cancelOrderBtn_Click(object sender, EventArgs e)
+        {
+            db.DeleteOrder(OrderNumber);
+            MessageBox.Show("Заказ удалён");
+            dataGridView1.Enabled = false;
+            cancelOrderBtn.Enabled = false;
+            addToOrderBtn.Enabled = false;
+            ConfirmOrderBtn.Enabled = false;
         }
     }
 }

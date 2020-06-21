@@ -51,6 +51,12 @@ namespace GunStore
         private void LicenseEntryPopupForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             //if (e.CloseReason == CloseReason.UserClosing) throw new ApplicationException("License entry aborted, cannot continue checkout");
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            throw new ApplicationException("License entry aborted, cannot continue checkout");
         }
     }
 }
