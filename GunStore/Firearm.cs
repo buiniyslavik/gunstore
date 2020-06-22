@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace GunStore
 {
-    public enum FirearmClass : int
+    public enum FirearmClass
     {
-        Shotgun = 0,
-        Rifle = 1,
-        LessLethal = 2,
-        NotAGun = -1
+        Shotgun,
+        Rifle,
+        LessLethal,
+        NotAGun
     }
     public sealed class Firearm
     {
