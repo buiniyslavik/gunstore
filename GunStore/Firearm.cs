@@ -5,10 +5,10 @@ namespace GunStore
 {
     public enum FirearmClass : int
     {
-        SHOTGUN = 0,
-        RIFLE = 1,
-        LESSLETHAL = 2,
-        NOTAGUN = -1
+        Shotgun = 0,
+        Rifle = 1,
+        LessLethal = 2,
+        NotAGun = -1
     }
     public sealed class Firearm
     {

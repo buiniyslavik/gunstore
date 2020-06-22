@@ -15,13 +15,13 @@ namespace GunStore
             headLabel.Text = $"Добавление лицензии для {currentGun.Name} в заказе {currentGun.TypeId}";
             switch (currentGun.Type)
             {
-                case FirearmClass.SHOTGUN:
+                case FirearmClass.Shotgun:
                     label6.Text = "Гладкоствольное оружие";
                     break;
-                case FirearmClass.RIFLE:
+                case FirearmClass.Rifle:
                     label6.Text = "Нарезное оружие";
                     break;
-                case FirearmClass.LESSLETHAL:
+                case FirearmClass.LessLethal:
                     label6.Text = "ОООП";
                     break;
             }

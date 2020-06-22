@@ -39,9 +39,9 @@ namespace GunStore
                         guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
                                  Convert.ToInt32(r.Cells["номерТипаГсDataGridViewTextBoxColumn"].Value),
                                  -1,
-                                 FirearmClass.SHOTGUN));
+                                 FirearmClass.Shotgun));
                 }
-                return FirearmClass.SHOTGUN;
+                return FirearmClass.Shotgun;
             }
             if (r.Cells["номерТипаНарDataGridViewTextBoxColumn"].Value.ToString() != string.Empty)
             {
@@ -49,8 +49,8 @@ namespace GunStore
                     if (fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
                                      Convert.ToInt32(r.Cells["номерТипаНарDataGridViewTextBoxColumn"].Value),
                                      -1,
-                                     FirearmClass.RIFLE));
-                return FirearmClass.RIFLE;
+                                     FirearmClass.Rifle));
+                return FirearmClass.Rifle;
             }
             if (r.Cells["номерТипаОоопDataGridViewTextBoxColumn"].Value.ToString() != string.Empty)
             {
@@ -58,10 +58,10 @@ namespace GunStore
                     if (fillList) guns.Add(new Firearm(r.Cells["названиеDataGridViewTextBoxColumn"].Value.ToString(),
                                      Convert.ToInt32(r.Cells["номерТипаОоопDataGridViewTextBoxColumn"].Value),
                                      -1,
-                                     FirearmClass.LESSLETHAL));
-                return FirearmClass.LESSLETHAL;
+                                     FirearmClass.LessLethal));
+                return FirearmClass.LessLethal;
             }
-            return FirearmClass.NOTAGUN;
+            return FirearmClass.NotAGun;
         }
 
         private void addToOrderBtn_Click(object sender, EventArgs e)
@@ -87,19 +87,19 @@ namespace GunStore
                 {
                     switch (fillFirearms(r, true))
                     {
-                        case FirearmClass.SHOTGUN:
+                        case FirearmClass.Shotgun:
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
                             r.DefaultCellStyle.SelectionBackColor = Color.Green;
                             r.Cells["IsAGunColumn"].Value = c.TrueValue;
                             break;
 
-                        case FirearmClass.RIFLE:
+                        case FirearmClass.Rifle:
                             r.DefaultCellStyle.BackColor = Color.LightPink;
                             r.DefaultCellStyle.SelectionBackColor = Color.Red;
                             r.Cells["IsAGunColumn"].Value = c.TrueValue;
                             break;
 
-                        case FirearmClass.LESSLETHAL:
+                        case FirearmClass.LessLethal:
                             r.DefaultCellStyle.BackColor = Color.LightCyan;
                             r.DefaultCellStyle.SelectionBackColor = Color.Blue;
                             r.Cells["IsAGunColumn"].Value = c.TrueValue;

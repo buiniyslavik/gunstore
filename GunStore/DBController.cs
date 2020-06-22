@@ -122,7 +122,7 @@ namespace GunStore
             {
                 switch (l.Type)
                 {
-                    case FirearmClass.SHOTGUN:
+                    case FirearmClass.Shotgun:
                         cmd.CommandText = "exec ДобавитьЛицензиюГс @licnum, @owner, @issued, @expires, @issuer";
                         cmd.Parameters.Add("@licnum", SqlDbType.VarChar).Value = l.Number;
                         cmd.Parameters.Add("@owner", SqlDbType.NVarChar).Value = l.HolderName;
@@ -132,7 +132,7 @@ namespace GunStore
                         cmd.ExecuteNonQuery();
 
                         break;
-                    case FirearmClass.RIFLE:
+                    case FirearmClass.Rifle:
                         cmd.CommandText = "exec ДобавитьЛицензиюНар @licnum, @owner, @issued, @expires, @issuer";
                         cmd.Parameters.Add("@licnum", SqlDbType.VarChar).Value = l.Number;
                         cmd.Parameters.Add("@owner", SqlDbType.NVarChar).Value = l.HolderName;
@@ -141,7 +141,7 @@ namespace GunStore
                         cmd.Parameters.Add("@issuer", SqlDbType.VarChar).Value = l.Issuer;
                         cmd.ExecuteNonQuery();
                         break;
-                    case FirearmClass.LESSLETHAL:
+                    case FirearmClass.LessLethal:
                         cmd.CommandText = "exec ДобавитьЛицензиюОООП @licnum, @owner, @issued, @expires, @issuer";
                         cmd.Parameters.Add("@licnum", SqlDbType.VarChar).Value = l.Number;
                         cmd.Parameters.Add("@owner", SqlDbType.NVarChar).Value = l.HolderName;
@@ -150,7 +150,7 @@ namespace GunStore
                         cmd.Parameters.Add("@issuer", SqlDbType.VarChar).Value = l.Issuer;
                         cmd.ExecuteNonQuery();
                         break;
-                    case FirearmClass.NOTAGUN:
+                    case FirearmClass.NotAGun:
                         throw new Exception("Разрешаю и так!");
                 }
 
@@ -163,25 +163,25 @@ namespace GunStore
             {
                 switch (gun.Type)
                 {
-                    case FirearmClass.SHOTGUN:
+                    case FirearmClass.Shotgun:
                         cmd.CommandText = "exec ДобавитьГсВЗаказ @gunid, @orderid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@orderid", SqlDbType.Int).Value = orderId;                       
                         cmd.ExecuteNonQuery();
                         break;
-                    case FirearmClass.RIFLE:
+                    case FirearmClass.Rifle:
                         cmd.CommandText = "exec ДобавитьНарВЗаказ @gunid, @orderid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@orderid", SqlDbType.Int).Value = orderId;
                         cmd.ExecuteNonQuery();
                         break;
-                    case FirearmClass.LESSLETHAL:
+                    case FirearmClass.LessLethal:
                         cmd.CommandText = "exec ДобавитьОоопВЗаказ @gunid, @orderid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@orderid", SqlDbType.Int).Value = orderId;
                         cmd.ExecuteNonQuery();
                         break;
-                    case FirearmClass.NOTAGUN:
+                    case FirearmClass.NotAGun:
                         throw new Exception("Разрешаю и так!");
                 }
             }
@@ -192,25 +192,25 @@ namespace GunStore
             {
                 switch (gun.Type)
                 {
-                    case FirearmClass.SHOTGUN:
+                    case FirearmClass.Shotgun:
                         cmd.CommandText = "exec ОтпуститьОружиеГс @gunid, @licid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
                         cmd.ExecuteNonQuery();
                         break;
-                    case FirearmClass.RIFLE:
+                    case FirearmClass.Rifle:
                         cmd.CommandText = "exec ОтпуститьОружиеНар @gunid, @licid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
                         cmd.ExecuteNonQuery();
                         break;
-                    case FirearmClass.LESSLETHAL:
+                    case FirearmClass.LessLethal:
                         cmd.CommandText = "exec ОтпуститьОружиеОооп @gunid, @licid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
                         cmd.Parameters.Add("@licid", SqlDbType.VarChar).Value = lic.Number;
                         cmd.ExecuteNonQuery();
                         break;
-                    case FirearmClass.NOTAGUN:
+                    case FirearmClass.NotAGun:
                         throw new Exception("Разрешаю и так!");
                 }
             }
@@ -224,28 +224,28 @@ namespace GunStore
                 switch (type)
                 {
 
-                    case FirearmClass.SHOTGUN:
+                    case FirearmClass.Shotgun:
                         cmd.CommandText = "exec СвободнаяЕдиницаГс @id output";
                         cmd.Parameters.Add("@id", SqlDbType.Int);
                         cmd.Parameters["@id"].Direction = ParameterDirection.Output;
                         cmd.ExecuteNonQuery();
                         i = Convert.ToInt32(cmd.Parameters["@id"].Value);
                         break;
-                    case FirearmClass.RIFLE:
+                    case FirearmClass.Rifle:
                         cmd.CommandText = "exec СвободнаяЕдиницаНар @id output";
                         cmd.Parameters.Add("@id", SqlDbType.Int);
                         cmd.Parameters["@id"].Direction = ParameterDirection.Output;
                         cmd.ExecuteNonQuery();
                         i = Convert.ToInt32(cmd.Parameters["@id"].Value);
                         break;
-                    case FirearmClass.LESSLETHAL:
+                    case FirearmClass.LessLethal:
                         cmd.CommandText = "exec СвободнаяЕдиницаОооп @id output";
                         cmd.Parameters.Add("@id", SqlDbType.Int);
                         cmd.Parameters["@id"].Direction = ParameterDirection.Output;
                         cmd.ExecuteNonQuery();
                         i = Convert.ToInt32(cmd.Parameters["@id"].Value);
                         break;
-                    case FirearmClass.NOTAGUN:
+                    case FirearmClass.NotAGun:
                         throw new Exception("Разрешаю и так!");
                 }
             }
@@ -259,7 +259,7 @@ namespace GunStore
             {
                 switch (gun.Type)
                 {
-                    case FirearmClass.SHOTGUN:
+                    case FirearmClass.Shotgun:
                         cmd.CommandText = "exec НомерЕдиницыВЗаказеГс @oid @tid @id output";
                         cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
                         cmd.Parameters.Add("@tid", SqlDbType.Int).Value = gun.TypeId;
@@ -268,7 +268,7 @@ namespace GunStore
                         cmd.ExecuteNonQuery();
                         i = Convert.ToInt32(cmd.Parameters["@id"].Value);
                         break;
-                    case FirearmClass.RIFLE:
+                    case FirearmClass.Rifle:
                         cmd.CommandText = "exec НомерЕдиницыВЗаказеНар @oid @tid @id output";
                         cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
                         cmd.Parameters.Add("@tid", SqlDbType.Int).Value = gun.TypeId;
@@ -277,7 +277,7 @@ namespace GunStore
                         cmd.ExecuteNonQuery();
                         i = Convert.ToInt32(cmd.Parameters["@id"].Value);
                         break;
-                    case FirearmClass.LESSLETHAL:
+                    case FirearmClass.LessLethal:
                         cmd.CommandText = "exec НомерЕдиницыВЗаказеОооп @oid @tid @id output";
                         cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
                         cmd.Parameters.Add("@tid", SqlDbType.Int).Value = gun.TypeId;
@@ -286,7 +286,7 @@ namespace GunStore
                         cmd.ExecuteNonQuery();
                         i = Convert.ToInt32(cmd.Parameters["@id"].Value);
                         break;
-                    case FirearmClass.NOTAGUN:
+                    case FirearmClass.NotAGun:
                         throw new Exception("Разрешаю и так!");
                 }
             }
@@ -330,22 +330,22 @@ namespace GunStore
             {
                 switch (gun.Type)
                 {
-                    case FirearmClass.SHOTGUN:
+                    case FirearmClass.Shotgun:
                         cmd.CommandText = "exec ЗанятьЕдиницуГс @id";                       
                         cmd.Parameters.Add("@id", SqlDbType.Int).Value = gun.PieceId;                        
                         cmd.ExecuteNonQuery();                        
                         break;
-                    case FirearmClass.RIFLE:
+                    case FirearmClass.Rifle:
                         cmd.CommandText = "exec ЗанятьЕдиницуНар @id";
                         cmd.Parameters.Add("@id", SqlDbType.Int).Value = gun.PieceId;
                         cmd.ExecuteNonQuery();
                         break;
-                    case FirearmClass.LESSLETHAL:
+                    case FirearmClass.LessLethal:
                         cmd.CommandText = "exec ЗанятьЕдиницуОооп @id";
                         cmd.Parameters.Add("@id", SqlDbType.Int).Value = gun.PieceId;
                         cmd.ExecuteNonQuery();
                         break;
-                    case FirearmClass.NOTAGUN:
+                    case FirearmClass.NotAGun:
                         throw new Exception("Разрешаю и так!");
                 }
             }
