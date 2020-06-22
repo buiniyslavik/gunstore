@@ -26,7 +26,8 @@ namespace GunStore
                 return instance;
             }
         }
-        private SqlConnection DbConn = new SqlConnection("Data Source=CIA;Initial Catalog=Gunstore;Integrated Security=True");//(ConfigurationManager.ConnectionStrings["config"].ConnectionString);
+        //private SqlConnection DbConn = new SqlConnection("Data Source=localhost;Initial Catalog=Gunstore;Integrated Security=True");//(ConfigurationManager.ConnectionStrings["config"].ConnectionString);
+        private SqlConnection DbConn = new SqlConnection(ConfigurationManager.ConnectionStrings["GunStore.Properties.Settings.GunstoreConnectionString"].ConnectionString);
 
         public void Open()
         {
