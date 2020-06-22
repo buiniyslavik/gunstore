@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GunStore
@@ -34,8 +27,8 @@ namespace GunStore
 
         private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(tabControl1.TabCount > 0)
-            tabControl1.TabPages.RemoveAt(tabControl1.SelectedIndex);
+            if (tabControl1.TabCount > 0)
+                tabControl1.TabPages.RemoveAt(tabControl1.SelectedIndex);
         }
 
         private void заказыToolStripMenuItem_Click(object sender, EventArgs e)

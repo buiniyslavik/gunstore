@@ -12,7 +12,7 @@ namespace GunStore
 {
     public class DBController
     {
-        private static DBController instance;
+        private static DBController _instance;
         private DBController()
         {
             Open();
@@ -21,26 +21,25 @@ namespace GunStore
         {
             get
             {
-                if (instance == null)
-                    instance = new DBController();
-                return instance;
+                if (_instance == null)
+                    _instance = new DBController();
+                return _instance;
             }
         }
-        //private SqlConnection DbConn = new SqlConnection("Data Source=localhost;Initial Catalog=Gunstore;Integrated Security=True");//(ConfigurationManager.ConnectionStrings["config"].ConnectionString);
-        private SqlConnection DbConn = new SqlConnection(ConfigurationManager.ConnectionStrings["GunStore.Properties.Settings.GunstoreConnectionString"].ConnectionString);
+        private SqlConnection _conn = new SqlConnection(ConfigurationManager.ConnectionStrings["GunStore.Properties.Settings.GunstoreConnectionString"].ConnectionString);
 
-        public void Open()
+        private void Open()
         {
-            DbConn.Open();
+            _conn.Open();
         }
-        public void Close()
+        private void Close()
         {
-            DbConn.Close();
+            _conn.Close();
         }
         public int AddCustomer(string name, string phone)
         {
             int i;
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "EXEC @Номер = ДобавитьКлиента @ИмяКлиента, @ТелефонКлиента, @СуммаПокупок";
                 //cmd.CommandType = CommandType.StoredProcedure;
@@ -58,7 +57,7 @@ namespace GunStore
         public decimal GetOrderTotal(int orderNumber)
         {
             decimal i;
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "SELECT @sum = СуммаЗаказа FROM Заказы WHERE НомерЗаказа = @НомерЗаказа";
                 //cmd.CommandType = CommandType.StoredProcedure;
@@ -74,7 +73,7 @@ namespace GunStore
         public int CreateOrder(int ClientId)
         {
             int i;
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "exec @id = СоздатьЗаказ @НомерКлиента";
                 cmd.Parameters.Add("@НомерКлиента", SqlDbType.Int).Value = ClientId;
@@ -90,7 +89,7 @@ namespace GunStore
         public int CreateMerch(string name, string desc, decimal price, int stock)
         {
             int i;
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "exec @id = ДобавитьТовар @n, @d, @p, @s";
                 cmd.Parameters.Add("@n", SqlDbType.VarChar).Value = name;
@@ -107,7 +106,7 @@ namespace GunStore
 
         public void AddMerchToOrder(int OrderId, int MerchId, int Quantity)
         {
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "exec ДобавитьТоварВЗаказ @OID, @MID, @Q";
                 cmd.Parameters.Add("@OID", SqlDbType.Int).Value = OrderId;
@@ -119,7 +118,7 @@ namespace GunStore
 
         public void AddLicense(License l) //(string number, string holderName, DateTime issueDate, DateTime expiryDate, string issuer, FirearmClass type)
         {
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 switch (l.Type)
                 {
@@ -160,7 +159,7 @@ namespace GunStore
 
         public void AddFirearmToOrder(int orderId, Firearm gun)
         {
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 switch (gun.Type)
                 {
@@ -189,7 +188,7 @@ namespace GunStore
         }
         public void BindLicense(License lic, Firearm gun)
         {
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 switch (gun.Type)
                 {
@@ -220,7 +219,7 @@ namespace GunStore
         public int GetUnusedGun(FirearmClass type)
         {
             int i = -1;
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 switch (type)
                 {
@@ -252,42 +251,11 @@ namespace GunStore
             }
             return i;
         }
-        // duplicate
-        /*
-        public void BindGunToOrder(int orderId, Firearm gun)
-        {
-            using (var cmd = DbConn.CreateCommand())
-            {
-                switch (gun.Type)
-                {
-                    case FirearmClass.SHOTGUN:
-                        cmd.CommandText = "exec ДобавитьГсВЗаказ @gid, @oid";
-                        cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
-                        cmd.Parameters.Add("@gid", SqlDbType.Int).Value = gun.PieceId;
-                        cmd.ExecuteNonQuery();
-                        break;
-                    case FirearmClass.RIFLE:
-                        cmd.CommandText = "exec ДобавитьНарВЗаказ @gid, @oid";
-                        cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
-                        cmd.Parameters.Add("@gid", SqlDbType.Int).Value = gun.PieceId;
-                        cmd.ExecuteNonQuery();
-                        break;
-                    case FirearmClass.LESSLETHAL:
-                        cmd.CommandText = "exec ДобавитьОоопВЗаказ @gid, @oid";
-                        cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
-                        cmd.Parameters.Add("@gid", SqlDbType.Int).Value = gun.PieceId;
-                        cmd.ExecuteNonQuery();
-                        break;
-                    case FirearmClass.NOTAGUN:
-                        throw new Exception("Разрешаю и так!");
-                }
-            }
-        }
-        */
+        
         public int GetFirearmIdForAnOrder(int orderId, Firearm gun)
         {
             int i = -1;
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 switch (gun.Type)
                 {
@@ -327,7 +295,7 @@ namespace GunStore
 
         public void CompleteOrder(int orderId)
         {
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "exec ЗавершитьЗаказ @oid";
                 cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
@@ -337,7 +305,7 @@ namespace GunStore
 
         public void DeleteOrder(int orderId)
         {        
-                using (var cmd = DbConn.CreateCommand())
+                using (var cmd = _conn.CreateCommand())
                 {
                     cmd.CommandText = "exec УдалитьЗаказ @oid";
                     cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
@@ -347,7 +315,7 @@ namespace GunStore
 
         public void DeleteMerchFromOrder(int orderId, int itemId)
         {
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "exec УдалитьТоварИзЗаказа @oid, @mid";
                 cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
@@ -358,7 +326,7 @@ namespace GunStore
 
         public void LockFirearm(Firearm gun)
         {
-            using (var cmd = DbConn.CreateCommand())
+            using (var cmd = _conn.CreateCommand())
             {
                 switch (gun.Type)
                 {

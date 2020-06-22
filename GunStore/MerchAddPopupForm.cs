@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Transactions;
+using System.Windows.Forms;
 
 namespace GunStore
 {
@@ -27,18 +21,18 @@ namespace GunStore
                 dbc.CreateMerch(NameTextBox.Text, DescriptionTextBox.Text, Convert.ToDecimal(priceTextBox.Text), Convert.ToInt32(numericUpDown1.Text));
                 t.Complete();
             }
-            this.Close();
+            Close();
         }
 
         private void priceTextBox_Validating(object sender, CancelEventArgs e)
         {
-            Decimal p;
-            if (!Decimal.TryParse(priceTextBox.Text, out p))
+            decimal p;
+            if (!decimal.TryParse(priceTextBox.Text, out p))
             {
                 errorProvider1.SetError(priceTextBox, "Цена введена неверно");
                 e.Cancel = true;
             }
-        
+
         }
     }
 }

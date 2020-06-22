@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GunStore
@@ -17,7 +10,7 @@ namespace GunStore
         public OrderListUc()
         {
             InitializeComponent();
-            
+
         }
         private void refresh()
         {
@@ -28,7 +21,7 @@ namespace GunStore
             var currencyManager1 = (CurrencyManager)BindingContext[dataGridView1.DataSource];
             currencyManager1.SuspendBinding();
             if (!showCompleteCheckBox.Checked)
-                foreach(DataGridViewRow r in dataGridView1.Rows)
+                foreach (DataGridViewRow r in dataGridView1.Rows)
                 {
                     if (r.Cells["статусЗаказаDataGridViewTextBoxColumn"].Value.ToString() == "Завершен")
                         r.Visible = false;
@@ -39,13 +32,13 @@ namespace GunStore
         private void OrderListUc_Load(object sender, EventArgs e)
         {
             refresh();
-            par = (Form1)this.FindForm();
+            par = (Form1)FindForm();
         }
 
         private void editOrderBtn_Click(object sender, EventArgs e)
         {
-            int n = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
-            TabController.OpenTab(par, new OrderDetailsControl(n), $"Заказ {n}");          
+            int n = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["номерЗаказаDataGridViewTextBoxColumn"].Value);
+            TabController.OpenTab(par, new OrderDetailsControl(n), $"Заказ {n}");
         }
 
         private void OrderListUc_Enter(object sender, EventArgs e)
@@ -71,7 +64,7 @@ namespace GunStore
 
         private void showCompleteCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void showCompleteCheckBox_CheckStateChanged(object sender, EventArgs e)

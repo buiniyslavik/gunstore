@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GunStore
 {
     public partial class CustomersUC : UserControl
     {
-        Form1 par;
-        DBController dbc;
+        private Form1 par;
+        private DBController dbc;
         public CustomersUC()
         {
             InitializeComponent();
@@ -22,7 +15,7 @@ namespace GunStore
         private void CustomersUC_Load(object sender, EventArgs e)
         {
             refresh();
-            par = (Form1)this.FindForm();
+            par = (Form1)FindForm();
             dbc = DBController.Instance;
         }
         private void refresh()

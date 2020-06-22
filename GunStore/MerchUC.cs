@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GunStore
 {
-    
+
     public partial class MerchUC : UserControl
     {
-        Form1 par;
-        DBController dbc;
+        private Form1 par;
+        private DBController dbc;
         public MerchUC()
         {
             InitializeComponent();
@@ -34,8 +27,8 @@ namespace GunStore
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-             
-            
+
+
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)

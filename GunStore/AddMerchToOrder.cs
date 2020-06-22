@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Transactions;
 
 namespace GunStore
 {
@@ -25,7 +17,7 @@ namespace GunStore
 
         private void addMerchBtn_Click(object sender, EventArgs e)
         {
-            if(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["остатокDataGridViewTextBoxColumn"].Value) < numericUpDown1.Value)
+            if (Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["остатокDataGridViewTextBoxColumn"].Value) < numericUpDown1.Value)
             {
                 MessageBox.Show("Недостаточно товара на складе!");
                 return;
