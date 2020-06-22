@@ -204,8 +204,9 @@ namespace GunStore
                         db.AddLicense(lic);
                         db.BindLicense(lic, f);
                     }
-                    db.CompleteOrder(OrderNumber);
-                    MessageBox.Show("Заказ закрыт");
+                db.CompleteOrder(OrderNumber);
+                MessageBox.Show("Заказ закрыт");
+                lockAll();
                 }
                 
                 catch (ApplicationException ex)
@@ -223,11 +224,8 @@ namespace GunStore
             {
                 db.DeleteOrder(OrderNumber);
                 MessageBox.Show("Заказ удалён");
-                dataGridView1.Enabled = false;
-                cancelOrderBtn.Enabled = false;
-                addToOrderBtn.Enabled = false;
-                ConfirmOrderBtn.Enabled = false;
-                deleteMerchBtn.Enabled = false;
+                lockAll();
+                
             }
             catch(SqlException ex)
             {
@@ -239,6 +237,15 @@ namespace GunStore
         {
             db.DeleteMerchFromOrder(OrderNumber, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["артикулDataGridViewTextBoxColumn"].Value));
             refresh();
+        }
+
+        private void lockAll()
+        {
+            dataGridView1.Enabled = false;
+            cancelOrderBtn.Enabled = false;
+            addToOrderBtn.Enabled = false;
+            ConfirmOrderBtn.Enabled = false;
+            deleteMerchBtn.Enabled = false;
         }
     }
 }
