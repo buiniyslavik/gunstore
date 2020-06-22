@@ -227,6 +227,7 @@ namespace GunStore
                 cancelOrderBtn.Enabled = false;
                 addToOrderBtn.Enabled = false;
                 ConfirmOrderBtn.Enabled = false;
+                deleteMerchBtn.Enabled = false;
             }
             catch(SqlException ex)
             {
@@ -236,7 +237,8 @@ namespace GunStore
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            db.DeleteMerchFromOrder(OrderNumber, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["артикулDataGridViewTextBoxColumn"].Value));
+            refresh();
         }
     }
 }

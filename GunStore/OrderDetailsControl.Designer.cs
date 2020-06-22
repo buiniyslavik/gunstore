@@ -54,7 +54,7 @@
             this.товарыВЗаказахBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gunstoreDataSet = new GunStore.GunstoreDataSet();
             this.товарыВЗаказахTableAdapter1 = new GunStore.GunstoreDataSetTableAdapters.ТоварыВЗаказахTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
+            this.deleteMerchBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.товарыВЗаказахBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gunstoreDataSet)).BeginInit();
@@ -167,6 +167,7 @@
             this.LicensesBtn.TabIndex = 15;
             this.LicensesBtn.Text = "Лицензии";
             this.LicensesBtn.UseVisualStyleBackColor = true;
+            this.LicensesBtn.Visible = false;
             this.LicensesBtn.Click += new System.EventHandler(this.LicensesBtn_Click);
             // 
             // dataGridView1
@@ -275,21 +276,21 @@
             // 
             this.товарыВЗаказахTableAdapter1.ClearBeforeFill = true;
             // 
-            // button1
+            // deleteMerchBtn
             // 
-            this.button1.Location = new System.Drawing.Point(552, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Удалить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.deleteMerchBtn.Location = new System.Drawing.Point(552, 13);
+            this.deleteMerchBtn.Name = "deleteMerchBtn";
+            this.deleteMerchBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteMerchBtn.TabIndex = 17;
+            this.deleteMerchBtn.Text = "Удалить";
+            this.deleteMerchBtn.UseVisualStyleBackColor = true;
+            this.deleteMerchBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // OrderDetailsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.deleteMerchBtn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.LicensesBtn);
             this.Controls.Add(this.discountAmountBox);
@@ -340,6 +341,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn номерТипаНарDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn номерТипаОоопDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsAGunColumn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button deleteMerchBtn;
     }
 }

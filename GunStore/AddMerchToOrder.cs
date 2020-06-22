@@ -33,10 +33,13 @@ namespace GunStore
 
             int ItemID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             int Quantity = Convert.ToInt32(numericUpDown1.Value);
-            using (TransactionScope tran = new TransactionScope())
+            try
             {
                 dbc.AddMerchToOrder(OrderNumber, ItemID, Quantity);
-                tran.Complete();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка добавления. Возможно, вы пытаетесь повторно добавить тот же товар.");
             }
             FindForm().Close();
         }
