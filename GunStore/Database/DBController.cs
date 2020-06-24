@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Configuration;
-using System.Data.Sql;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace GunStore
 {
@@ -15,7 +10,7 @@ namespace GunStore
         private static DBController _instance;
         private DBController()
         {
-            Open();
+           
         }
         public static DBController Instance
         {
@@ -28,21 +23,21 @@ namespace GunStore
         }
         private SqlConnection _conn = new SqlConnection(ConfigurationManager.ConnectionStrings["GunStore.Properties.Settings.GunstoreConnectionString"].ConnectionString);
 
-        private void Open()
+        private void openConn()
         {
             _conn.Open();
         }
-        private void Close()
+        private void closeConn()
         {
             _conn.Close();
         }
         public int AddCustomer(string name, string phone)
         {
+            openConn();
             int i;
             using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "EXEC @Номер = ДобавитьКлиента @ИмяКлиента, @ТелефонКлиента, @СуммаПокупок";
-                //cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@ИмяКлиента", SqlDbType.VarChar).Value = name;
                 cmd.Parameters.Add("@ТелефонКлиента", SqlDbType.VarChar).Value = phone;
                 cmd.Parameters.Add("@СуммаПокупок", SqlDbType.Int).Value = 0;
@@ -51,27 +46,30 @@ namespace GunStore
                 cmd.ExecuteNonQuery();
                 i = Convert.ToInt32(cmd.Parameters["@Номер"].Value);
             }
+            closeConn();
             return i;
         }
 
         public decimal GetOrderTotal(int orderNumber)
         {
+            openConn();
             decimal i;
             using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "SELECT @sum = СуммаЗаказа FROM Заказы WHERE НомерЗаказа = @НомерЗаказа";
-                //cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@НомерЗаказа", SqlDbType.Int).Value = orderNumber;
                 cmd.Parameters.Add("@sum", SqlDbType.Money);
                 cmd.Parameters["@sum"].Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
                 i = Convert.ToDecimal(cmd.Parameters["@sum"].Value);
             }
+            closeConn();
             return i;
         }
 
         public int CreateOrder(int ClientId)
         {
+            openConn();
             int i;
             using (var cmd = _conn.CreateCommand())
             {
@@ -81,13 +79,15 @@ namespace GunStore
                 cmd.Parameters["@id"].Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
                 i = Convert.ToInt32(cmd.Parameters["@id"].Value);
-            }
+            }            
+            closeConn();
             return i;
         }
 
 
         public int CreateMerch(string name, string desc, decimal price, int stock)
         {
+            openConn();
             int i;
             using (var cmd = _conn.CreateCommand())
             {
@@ -101,11 +101,13 @@ namespace GunStore
                 cmd.ExecuteNonQuery();
                 i = Convert.ToInt32(cmd.Parameters["@id"].Value);
             }
+            closeConn();
             return i;
         }
 
         public void AddMerchToOrder(int OrderId, int MerchId, int Quantity)
         {
+            openConn();
             using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "exec ДобавитьТоварВЗаказ @OID, @MID, @Q";
@@ -114,10 +116,12 @@ namespace GunStore
                 cmd.Parameters.Add("@Q", SqlDbType.Int).Value = Quantity;
                 cmd.ExecuteNonQuery();
             }
+            closeConn();
         }
 
-        public void AddLicense(License l) //(string number, string holderName, DateTime issueDate, DateTime expiryDate, string issuer, FirearmClass type)
+        public void AddLicense(License l) 
         {
+            openConn();
             using (var cmd = _conn.CreateCommand())
             {
                 switch (l.Type)
@@ -155,10 +159,12 @@ namespace GunStore
                 }
 
             }
+            closeConn();
         }
 
         public void AddFirearmToOrder(int orderId, Firearm gun)
         {
+            openConn();
             using (var cmd = _conn.CreateCommand())
             {
                 switch (gun.Type)
@@ -166,7 +172,7 @@ namespace GunStore
                     case FirearmClass.Shotgun:
                         cmd.CommandText = "exec ДобавитьГсВЗаказ @gunid, @orderid";
                         cmd.Parameters.Add("@gunid", SqlDbType.Int).Value = gun.PieceId;
-                        cmd.Parameters.Add("@orderid", SqlDbType.Int).Value = orderId;                       
+                        cmd.Parameters.Add("@orderid", SqlDbType.Int).Value = orderId;
                         cmd.ExecuteNonQuery();
                         break;
                     case FirearmClass.Rifle:
@@ -185,9 +191,11 @@ namespace GunStore
                         throw new Exception("Разрешаю и так!");
                 }
             }
+            closeConn();
         }
         public void BindLicense(License lic, Firearm gun)
         {
+            openConn();
             using (var cmd = _conn.CreateCommand())
             {
                 switch (gun.Type)
@@ -214,10 +222,12 @@ namespace GunStore
                         throw new Exception("Разрешаю и так!");
                 }
             }
+            closeConn();
         }
 
         public int GetUnusedGun(FirearmClass type)
         {
+            openConn();
             int i = -1;
             using (var cmd = _conn.CreateCommand())
             {
@@ -249,11 +259,13 @@ namespace GunStore
                         throw new Exception("Разрешаю и так!");
                 }
             }
+            closeConn();
             return i;
         }
-        
+
         public int GetFirearmIdForAnOrder(int orderId, Firearm gun)
         {
+            openConn();
             int i = -1;
             using (var cmd = _conn.CreateCommand())
             {
@@ -290,31 +302,37 @@ namespace GunStore
                         throw new Exception("Разрешаю и так!");
                 }
             }
-                return i;
+            closeConn();
+            return i;            
         }
 
         public void CompleteOrder(int orderId)
         {
+            openConn();
             using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "exec ЗавершитьЗаказ @oid";
                 cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
                 cmd.ExecuteNonQuery();
             }
+            closeConn();
         }
 
         public void DeleteOrder(int orderId)
-        {        
-                using (var cmd = _conn.CreateCommand())
-                {
-                    cmd.CommandText = "exec УдалитьЗаказ @oid";
-                    cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
-                    cmd.ExecuteNonQuery();
-                }                   
+        {
+            openConn();
+            using (var cmd = _conn.CreateCommand())
+            {
+                cmd.CommandText = "exec УдалитьЗаказ @oid";
+                cmd.Parameters.Add("@oid", SqlDbType.Int).Value = orderId;
+                cmd.ExecuteNonQuery();
+            }
+            closeConn();
         }
 
         public void DeleteMerchFromOrder(int orderId, int itemId)
         {
+            openConn();
             using (var cmd = _conn.CreateCommand())
             {
                 cmd.CommandText = "exec УдалитьТоварИзЗаказа @oid, @mid";
@@ -322,18 +340,20 @@ namespace GunStore
                 cmd.Parameters.Add("@mid", SqlDbType.Int).Value = itemId;
                 cmd.ExecuteNonQuery();
             }
+            closeConn();
         }
 
         public void LockFirearm(Firearm gun)
         {
+            openConn();
             using (var cmd = _conn.CreateCommand())
             {
                 switch (gun.Type)
                 {
                     case FirearmClass.Shotgun:
-                        cmd.CommandText = "exec ЗанятьЕдиницуГс @id";                       
-                        cmd.Parameters.Add("@id", SqlDbType.Int).Value = gun.PieceId;                        
-                        cmd.ExecuteNonQuery();                        
+                        cmd.CommandText = "exec ЗанятьЕдиницуГс @id";
+                        cmd.Parameters.Add("@id", SqlDbType.Int).Value = gun.PieceId;
+                        cmd.ExecuteNonQuery();
                         break;
                     case FirearmClass.Rifle:
                         cmd.CommandText = "exec ЗанятьЕдиницуНар @id";
@@ -349,6 +369,7 @@ namespace GunStore
                         throw new Exception("Разрешаю и так!");
                 }
             }
+            closeConn();
         }
     }
 }
