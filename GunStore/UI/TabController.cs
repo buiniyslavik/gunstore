@@ -3,7 +3,7 @@ namespace GunStore
 {
     static public class TabController
     {
-        static public void OpenTab(Form1 f, UserControl u, string name)
+        static public void OpenTab(MainForm f, UserControl u, string name)
         {
             TabPage p = new TabPage
             {

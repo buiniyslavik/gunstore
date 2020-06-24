@@ -6,12 +6,12 @@ namespace GunStore
 
     public partial class MerchUC : UserControl
     {
-        private Form1 par;
+        private MainForm par;
         private DBController dbc;
         public MerchUC()
         {
             InitializeComponent();
-            par = (Form1)FindForm();
+            par = (MainForm)FindForm();
             dbc = DBController.Instance;
         }
 

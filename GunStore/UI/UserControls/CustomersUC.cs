@@ -5,7 +5,7 @@ namespace GunStore
 {
     public partial class CustomersUC : UserControl
     {
-        private Form1 par;
+        private MainForm par;
         private DBController dbc;
         public CustomersUC()
         {
@@ -15,7 +15,7 @@ namespace GunStore
         private void CustomersUC_Load(object sender, EventArgs e)
         {
             refresh();
-            par = (Form1)FindForm();
+            par = (MainForm)FindForm();
             dbc = DBController.Instance;
         }
         private void refresh()

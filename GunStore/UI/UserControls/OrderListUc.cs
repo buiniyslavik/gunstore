@@ -6,7 +6,7 @@ namespace GunStore
     public partial class OrderListUc : UserControl
     {
 
-        Form1 par;
+        MainForm par;
         public OrderListUc()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace GunStore
         private void OrderListUc_Load(object sender, EventArgs e)
         {
             refresh();
-            par = (Form1)FindForm();
+            par = (MainForm)FindForm();
         }
 
         private void editOrderBtn_Click(object sender, EventArgs e)

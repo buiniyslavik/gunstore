@@ -56,10 +56,10 @@
   <ItemGroup>
     <Compile Include="Model\FirearmClass.cs" />
     <Compile Include="Model\License.cs" />
-    <Compile Include="PopupForms\AddMerchToOrder.cs">
+    <Compile Include="UI\PopupForms\AddMerchToOrder.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PopupForms\AddMerchToOrder.Designer.cs">
+    <Compile Include="UI\PopupForms\AddMerchToOrder.Designer.cs">
       <DependentUpon>AddMerchToOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomerAddPopupForm.cs">
@@ -68,19 +68,19 @@
     <Compile Include="CustomerAddPopupForm.Designer.cs">
       <DependentUpon>CustomerAddPopupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CustomersUC.cs">
+    <Compile Include="UI\UserControls\CustomersUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\CustomersUC.Designer.cs">
+    <Compile Include="UI\UserControls\CustomersUC.Designer.cs">
       <DependentUpon>CustomersUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\DBController.cs" />
     <Compile Include="Model\Firearm.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="UI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="UI\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GunstoreDataSet1.cs">
       <DependentUpon>GunstoreDataSet1.xsd</DependentUpon>
@@ -90,61 +90,61 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GunstoreDataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="PopupForms\LicenseEntryPopupForm.cs">
+    <Compile Include="UI\PopupForms\LicenseEntryPopupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PopupForms\LicenseEntryPopupForm.Designer.cs">
+    <Compile Include="UI\PopupForms\LicenseEntryPopupForm.Designer.cs">
       <DependentUpon>LicenseEntryPopupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PopupForms\MerchAddPopupForm.cs">
+    <Compile Include="UI\PopupForms\MerchAddPopupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PopupForms\MerchAddPopupForm.Designer.cs">
+    <Compile Include="UI\PopupForms\MerchAddPopupForm.Designer.cs">
       <DependentUpon>MerchAddPopupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MerchUC.cs">
+    <Compile Include="UI\UserControls\MerchUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MerchUC.Designer.cs">
+    <Compile Include="UI\UserControls\MerchUC.Designer.cs">
       <DependentUpon>MerchUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\OrderListUc.cs">
+    <Compile Include="UI\UserControls\OrderListUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\OrderListUc.Designer.cs">
+    <Compile Include="UI\UserControls\OrderListUc.Designer.cs">
       <DependentUpon>OrderListUc.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\OrderDetailsControl.cs">
+    <Compile Include="UI\UserControls\OrderDetailsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\OrderDetailsControl.Designer.cs">
+    <Compile Include="UI\UserControls\OrderDetailsControl.Designer.cs">
       <DependentUpon>OrderDetailsControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="TabController.cs" />
-    <EmbeddedResource Include="PopupForms\AddMerchToOrder.resx">
+    <Compile Include="UI\TabController.cs" />
+    <EmbeddedResource Include="UI\PopupForms\AddMerchToOrder.resx">
       <DependentUpon>AddMerchToOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerAddPopupForm.resx">
       <DependentUpon>CustomerAddPopupForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\CustomersUC.resx">
+    <EmbeddedResource Include="UI\UserControls\CustomersUC.resx">
       <DependentUpon>CustomersUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="UI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PopupForms\LicenseEntryPopupForm.resx">
+    <EmbeddedResource Include="UI\PopupForms\LicenseEntryPopupForm.resx">
       <DependentUpon>LicenseEntryPopupForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PopupForms\MerchAddPopupForm.resx">
+    <EmbeddedResource Include="UI\PopupForms\MerchAddPopupForm.resx">
       <DependentUpon>MerchAddPopupForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\MerchUC.resx">
+    <EmbeddedResource Include="UI\UserControls\MerchUC.resx">
       <DependentUpon>MerchUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\OrderListUc.resx">
+    <EmbeddedResource Include="UI\UserControls\OrderListUc.resx">
       <DependentUpon>OrderListUc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -156,7 +156,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\OrderDetailsControl.resx">
+    <EmbeddedResource Include="UI\UserControls\OrderDetailsControl.resx">
       <DependentUpon>OrderDetailsControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GunstoreDataSet1.xsc">
