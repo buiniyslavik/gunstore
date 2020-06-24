@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\FirearmClass.cs" />
+    <Compile Include="Model\License.cs" />
     <Compile Include="PopupForms\AddMerchToOrder.cs">
       <SubType>UserControl</SubType>
     </Compile>
